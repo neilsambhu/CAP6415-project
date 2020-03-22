@@ -69,7 +69,7 @@ edges = cnet.query_concept('banana')
 print(len(edges))
 print(edges)
 
-edges = cnet.query_edge('banana', 'fruit')
+edges = cnet.query_edge('banana', 'food')
 print(len(edges))
 print(edges)
 
