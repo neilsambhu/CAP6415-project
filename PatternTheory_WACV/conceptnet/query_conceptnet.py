@@ -59,17 +59,18 @@ class ConceptNet:
 					r.append((concept2,rel,concept1,w))
 		return r
 
-# if len(sys.argv) != 2:
-# 	print("Usage: " + sys.argv[0] + " [input_edges.csv]", file=sys.stderr)
-# 	sys.exit(1)
+if len(sys.argv) != 2:
+	print("Usage: " + sys.argv[0] + " [input_edges.csv]", file=sys.stderr)
+	sys.exit(1)
 
-# cnet = ConceptNet(sys.argv[1])
+cnet = ConceptNet(sys.argv[1])
 
-# edges = cnet.query_concept('banana')
-# print(len(edges))
-# print(edges)
+edges = cnet.query_concept('banana')
+edges = sorted(edges, key=lambda tup: tup[3], reverse=True)
+print(len(edges))
+print(edges)
 
-# edges = cnet.query_edge('banana', 'food')
-# print(len(edges))
-# print(edges)
+edges = cnet.query_edge('banana', 'food')
+print(len(edges))
+print(edges)
 
