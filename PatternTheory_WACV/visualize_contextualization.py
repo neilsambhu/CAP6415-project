@@ -14,7 +14,7 @@ def getEquivalence(item):
 	query = 'http://api.conceptnet.io/c/en/' + item + '?offset=0&limit=10000'
 	try:
 		obj = requests.get(query).json()
-		print(len(obj['edges']))
+		#print(len(obj['edges']))
 	except Exception as e:
 		print("Query",query)
 		print("Error:", e)
