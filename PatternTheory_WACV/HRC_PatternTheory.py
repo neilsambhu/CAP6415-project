@@ -146,7 +146,7 @@ def main():
 	start_time = time.time()
 	# 3/24/2020 7:01 PM print filelist length
 	print("File count: %s" % len(filelist))
-	for file in filelist:
+	for file in tqdm(filelist):
 		inputFile = inputPath + file
 		if os.path.isdir(inputFile):
 			print "Folder!!!"
