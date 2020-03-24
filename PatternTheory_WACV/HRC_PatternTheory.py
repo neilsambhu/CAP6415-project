@@ -10,7 +10,7 @@ import Inference as inf
 import time
 import os
 import operator
-import tqdm
+from tqdm import tqdm
 
 semBondWeight = 0.5
 supBondWeight = 2.5 
