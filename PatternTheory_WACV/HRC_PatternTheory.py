@@ -144,7 +144,8 @@ def main():
 	topK = 10
 
 	start_time = time.time()
-
+	# 3/24/2020 7:01 PM print filelist length
+	print("File count: %s" % len(filelist))
 	for file in filelist:
 		inputFile = inputPath + file
 		if os.path.isdir(inputFile):
@@ -159,7 +160,7 @@ def main():
 		outputFile = outputPath + "_".join(i for i in data) + "_" + str(topK) + "_results.txt"
 
 		PatternTheory(inputFile, semanticBondPath, topK, outputFile)
-		break
+		#break 3/24/2020 7:00 PM 
 
 	print("--- %s seconds ---" % (time.time() - start_time))
 
