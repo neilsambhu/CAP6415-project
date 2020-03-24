@@ -61,7 +61,7 @@ class ConceptNet:
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:
-		print("Usage: " + sys.argv[0] + " [input_edges.csv]", file=sys.stderr)
+		#print("Usage: " + sys.argv[0] + " [input_edges.csv]", file=sys.stderr)
 		sys.exit(1)
 	
 	cnet = ConceptNet(sys.argv[1])
