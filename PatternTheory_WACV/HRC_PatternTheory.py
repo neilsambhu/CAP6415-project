@@ -146,7 +146,7 @@ def main():
 
 	start_time = time.time()
 	# 3/24/2020 7:01 PM print filelist length
-	print("File count: %s" % len(filelist))
+	#print("File count: %s" % len(filelist))
 	for file in tqdm(filelist):
 		inputFile = inputPath + file
 		if os.path.isdir(inputFile):
@@ -154,7 +154,7 @@ def main():
 			continue
 		# if "features_P03_cereals_cam01" not in file:
 		# 	continue
-		print file
+		print file #commented out 3/24/2020 7:18 PM 
 		data = str.split(file.replace('\n', ''), "_")
 
 		outputFile = outputPath + "_".join(i for i in data) + "_" + str(topK) + "_results.txt"
