@@ -46,7 +46,9 @@ class ConceptNet:
 							continue
 						for w in self.edge_weights[(start,rel,concept)]:
 							r.append((start,rel,concept,w))
-		return r
+		# 3/24/2020 6:47 PM 
+		r = sorted(r, key=lambda tup: tup[3], reverse=True)
+    return r
 
 	def query_edge(self, concept1, concept2):
 		r = []
@@ -57,6 +59,8 @@ class ConceptNet:
 			if (concept2,rel,concept1) in self.edge_weights:
 				for w in self.edge_weights[(concept2,rel,concept1)]:
 					r.append((concept2,rel,concept1,w))
+		# 3/24/2020 6:50 PM 
+		r = sorted(r, key=lambda tup: tup[3], reverse=True)
 		return r
 
 if __name__ == '__main__':
@@ -67,7 +71,6 @@ if __name__ == '__main__':
 	cnet = ConceptNet(sys.argv[1])
 	
 	edges = cnet.query_concept('banana')
-	edges = sorted(edges, key=lambda tup: tup[3], reverse=True)
 	print(len(edges))
 	print(edges)
 	
