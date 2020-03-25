@@ -1,3 +1,4 @@
+#python HRC_PatternTheory.py
 import Configuration as config
 import Generator as gen
 import SupportBond as sup_b
