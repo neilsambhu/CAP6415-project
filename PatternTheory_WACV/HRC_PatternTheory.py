@@ -21,7 +21,7 @@ def PatternTheory(inputFile, semanticBondPath, topK, outFile):
 	genID = count(0)
 	localSwapSpace = {}
 	topKLabel = 0
-	priorScale = 100
+	priorScale = 10 #changed from 100 to 10 on 3/28/2020 7:29 PM 
 
 	#Load Feature labels and create feature generators
 	equivalence = {}

@@ -34,8 +34,8 @@ for topK in range(10):
 		dataVal.append(data[3])
 		dataVal.append(data[4])
 		videoName = "_".join(i for i in dataVal)
-		truthValue.append(data[3])
 		truthValue.append(data[4])
+		truthValue.append(data[5])
 
 		if data[3] or data[4] in actions:
 			totalA += 1
