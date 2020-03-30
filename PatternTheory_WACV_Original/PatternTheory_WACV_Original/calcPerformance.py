@@ -26,6 +26,8 @@ for errorProb in range(1):
 			actCorrect = 0
 			for inputFile in filelist:
 				truthValue = []
+				if 'SIL' in inputFile:
+					continue
 				data = str.split(inputFile.replace('\n', ''), "_")
 				dataVal = []
 				dataVal.append(data[0])
