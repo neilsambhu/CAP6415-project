@@ -5,8 +5,8 @@ butter_topping
 topping_spoon
 topping_SIL
 topping_put
-bun_squeeze
+sugar_take
+butter_sugar
+cereals_take
+bun_take
 crack_topping
-topping_pour
-squeeze_plate
-topping_peel

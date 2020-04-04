@@ -7,6 +7,6 @@ smear_cereals
 fry_cereals
 butter_cereals
 crack_cereals
-cut_cereals
-put_cereals
-cereals_SIL
+add_pancake
+milk_add
+egg_add

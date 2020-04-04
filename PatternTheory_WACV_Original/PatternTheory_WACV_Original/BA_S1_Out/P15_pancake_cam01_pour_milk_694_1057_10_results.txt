@@ -3,10 +3,10 @@ crack_cup
 butter_cup
 spoon_cup
 crack_saltnpepper
-crack_pancake
 cup_take
-crack_topping
 add_cup
 crack_plate
-butter_saltnpepper
 cup_pour
+crack_teabag
+water_crack
+put_cup
