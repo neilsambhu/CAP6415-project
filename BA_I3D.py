@@ -5,8 +5,8 @@ from enum import Enum
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
 
-class Actions(Enum):
-	put=0
+# class Actions(Enum):
+# 	put=0
 	# cut=0
 	# walk_in
 	# put
@@ -17,7 +17,7 @@ def LoadData():
 	for feature in os.listdir(dir_labels):
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
-			print(Actions[featureSplit[4]].value)
+			print(featureSplit[4])
 		# break
 
 def main():
