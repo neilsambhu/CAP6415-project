@@ -17,12 +17,11 @@ def LoadData():
 	for feature in os.listdir(dir_labels):
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
-			print(featureSplit)
-			pass
-		dir_x = os.path.join(dir_I3D,
-			featureSplit[1] + '_' + featureSplit[3] + 
-			featureSplit[1] + '_' + 
-			featureSplit[2] + '.npy')
+			# print(featureSplit)
+			dir_x = os.path.join(dir_I3D,
+				featureSplit[1] + '_' + featureSplit[3] + 
+				featureSplit[1] + '_' + featureSplit[2] + 
+				'.npy')
 		print(dir_x)
 		# glob.glob()
 		# break
