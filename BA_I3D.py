@@ -25,7 +25,7 @@ def LoadData():
 			if os.path.exists(filePath_x):
 				np.append(y, filePath_x)
 			else:
-				print('File not found: {filePath_x}')
+				print(f'File not found: {filePath_x}')
 		# glob.glob()
 		# break
 	print(y.shape)
