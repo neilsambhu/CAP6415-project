@@ -17,7 +17,7 @@ def LoadData():
 	for feature in os.listdir(dir_labels):
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
-			print(Actions[featureSplit[4]])
+			print(Actions[featureSplit[4]].value)
 		# break
 
 def main():
