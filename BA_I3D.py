@@ -2,7 +2,7 @@ import numpy as np
 import os, glob
 from enum import Enum
 
-dir_I3D = "bf_kinetics_feat/"
+dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
 
 # class Actions(Enum):
@@ -13,7 +13,7 @@ dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PrePr
 	# ","spoon","peel","stir","walk_out", "smear","squeeze", "butter", "pour", "fry", "crack", "take", "add"]
 
 def LoadData():
-	x, y = np.array([]), np.array([])
+	x, y = list(), list()
 	for feature in os.listdir(dir_labels):
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
@@ -22,12 +22,12 @@ def LoadData():
 				featureSplit[1] + '_' + featureSplit[3] + '_' +
 				featureSplit[1] + '_' + featureSplit[2] + '.npy')
 			if os.path.exists(filePath_x):
-				np.append(y, filePath_x)
+				y.append(filePath_x)
 			else:
 				print(f'File not found: {filePath_x}')
 		# glob.glob()
 		# break
-	print(y.shape)
+	print(len(y))
 
 def main():
 	LoadData()
