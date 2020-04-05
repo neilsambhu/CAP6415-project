@@ -19,9 +19,10 @@ def LoadData():
 		if len(featureSplit) > 1:
 			print(featureSplit)
 			pass
-		dir_x = os.path.join(dir_I3D[1], '_', 
-			dir_I3D[3], dir_I3D[1], '_', dir_I3D[2],
-			'.npy')
+		dir_x = os.path.join(dir_I3D,
+			featureSplit[1] + '_' + featureSplit[3] + 
+			featureSplit[1] + '_' + 
+			featureSplit[2] + '.npy')
 		print(dir_x)
 		# glob.glob()
 		# break
