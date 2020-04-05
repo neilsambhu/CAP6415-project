@@ -22,7 +22,7 @@ def LoadData():
 				featureSplit[1] + '_' + featureSplit[3] + 
 				featureSplit[1] + '_' + featureSplit[2] + 
 				'.npy')
-		print(dir_x)
+			print(dir_x)
 		# glob.glob()
 		# break
 
