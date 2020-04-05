@@ -19,9 +19,8 @@ def LoadData():
 		if len(featureSplit) > 1:
 			# print(featureSplit)
 			filePath_x = os.path.join(dir_I3D,
-				featureSplit[1] + '_' + featureSplit[3] + 
-				featureSplit[1] + '_' + featureSplit[2] + 
-				'.npy')
+				featureSplit[1] + '_' + featureSplit[3] + '_' +
+				featureSplit[1] + '_' + featureSplit[2] + '.npy')
 			if os.path.exists(filePath_x):
 				np.append(y, filePath_x)
 			else:
