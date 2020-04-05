@@ -18,6 +18,9 @@ def LoadData():
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
 			# print(featureSplit)
+			# replace 'salad' with 'salat'
+			if featureSplit[2] == 'salad':
+				featureSplit[2] = 'salat'
 			filePath_x = os.path.join(dir_I3D,
 				featureSplit[1] + '_' + featureSplit[3] + '_' +
 				featureSplit[1] + '_' + featureSplit[2] + '.npy')
