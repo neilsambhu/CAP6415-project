@@ -8,6 +8,7 @@ def LoadData():
 	X, y = np.array([]), np.array([])
 	for feature in os.listdir(dir_labels):
 		print(feature)
+		break
 
 def main():
 	LoadData()
