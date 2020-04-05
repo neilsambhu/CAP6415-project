@@ -1,5 +1,5 @@
 import numpy as np
-import os
+import os, glob
 from enum import Enum
 
 dir_I3D = "./bf_kinetics_feat/"
@@ -17,7 +17,9 @@ def LoadData():
 	for feature in os.listdir(dir_labels):
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
-			print(featureSplit[4])
+			print(featureSplit)
+			pass
+		# glob.glob(os.path.join(dir_I3D, ))
 		# break
 
 def main():
