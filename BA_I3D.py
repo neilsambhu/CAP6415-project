@@ -8,7 +8,7 @@ actions = ["cut","walk_in","spoon","peel","stir","walk_out", "smear","put","sque
 def LoadData():
 	X, y = np.array([]), np.array([])
 	for feature in os.listdir(dir_labels):
-		print(feature.split('_')[4])
+		print(feature.split('_'))
 		# break
 
 def main():
