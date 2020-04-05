@@ -1,5 +1,5 @@
 import numpy as np
-import os
+import os, Enum
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
