@@ -18,13 +18,17 @@ def LoadData():
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
 			# print(featureSplit)
-			dir_x = os.path.join(dir_I3D,
+			filePath_x = os.path.join(dir_I3D,
 				featureSplit[1] + '_' + featureSplit[3] + 
 				featureSplit[1] + '_' + featureSplit[2] + 
 				'.npy')
-			print(dir_x)
+			if os.path.exists(filePath_x):
+				np.append(y, filePath_x)
+			else:
+				print('File not found')
 		# glob.glob()
 		# break
+	print(y.shape)
 
 def main():
 	LoadData()
