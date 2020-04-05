@@ -13,13 +13,17 @@ dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PrePr
 	# ","spoon","peel","stir","walk_out", "smear","squeeze", "butter", "pour", "fry", "crack", "take", "add"]
 
 def LoadData():
-	X, y = np.array([]), np.array([])
+	x, y = np.array([]), np.array([])
 	for feature in os.listdir(dir_labels):
 		featureSplit = feature.split('_')
 		if len(featureSplit) > 1:
 			print(featureSplit)
 			pass
-		# glob.glob(os.path.join(dir_I3D, ))
+		dir_x = os.path.join(dir_I3D[1], '_', 
+			dir_I3D[3], dir_I3D[1], '_', dir_I3D[2],
+			'.npy')
+		print(dir_x)
+		# glob.glob()
 		# break
 
 def main():
