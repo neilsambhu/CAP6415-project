@@ -22,10 +22,13 @@ def LoadData():
 			if featureSplit[2] == 'salad':
 				featureSplit[2] = 'salat'
 			filePath_x = os.path.join(dir_I3D,
-				featureSplit[1] + '_' + featureSplit[3] + '_' +
-				featureSplit[1] + '_' + featureSplit[2] + '.npy')
+				featureSplit[1] + '_' + 
+				featureSplit[3] + '_' +
+				featureSplit[1] + '_' + 
+				featureSplit[2] + '.npy')
 			if os.path.exists(filePath_x):
-				y.append(filePath_x)
+				np.load(filePath_x)
+				# y.append()
 			else:
 				print(f'File not found: {filePath_x}')
 		# glob.glob()
