@@ -1,5 +1,6 @@
-import numpy as np, tqdm as tqdm
+import numpy as np
 import os, glob
+from tqdm import tqdm
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
