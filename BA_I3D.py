@@ -25,14 +25,16 @@ def LoadData():
 				frameOffset = 5
 				frameStart = int(featureSplit[6])-frameOffset
 				frameEnd = int(featureSplit[7])-frameOffset+1
+				frameCount = frameEnd-frameStart
 				if frameStart < 0:
 					print(f'Error: frameStart value {frameStart}')
-				print(frameEnd,frameStart,featureSplit[7],featureSplit[6],
-					frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
+				# print(frameEnd,frameStart,featureSplit[7],featureSplit[6],
+				# 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
 				feature_x = featureVideo[frameStart:frameEnd,:]
 				print(feature_x.shape)
-				# y.append()
-				# print(f'{filePath_x}')
+				x.append(feature_x)
+				y.append([featureSplit[5]] * frameCount)
+				print(np.array(x).shape, np.array(y).shape)
 			else:
 				print(f'File not found: {filePath_x}')
 
