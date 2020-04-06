@@ -26,8 +26,8 @@ def LoadData():
 		featureVideo = np.load(filePath_x)
 		# print(featureVideo.shape)
 		frameOffset = 5
-		frameStart = int(featureSplit[6])-frameOffset
-		frameEnd = int(featureSplit[7])-frameOffset+1
+		frameStart = int(featureSplit[-2])-frameOffset
+		frameEnd = int(featureSplit[-1])-frameOffset+1
 		frameCount = frameEnd-frameStart
 		if frameStart < 0:
 			print(f'Error: frameStart value {frameStart}')
@@ -37,7 +37,7 @@ def LoadData():
 		feature_x = featureVideo[frameStart:frameEnd,:]
 		# print(feature_x.shape)
 		x.extend(feature_x)
-		y.extend([featureSplit[6]] * frameCount)
+		y.extend([featureSplit[-2]] * frameCount)
 	print(np.array(x).shape, np.array(y).shape)
 
 def main():
