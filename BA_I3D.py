@@ -22,6 +22,14 @@ def LoadData():
 			if os.path.exists(filePath_x):
 				feature_x = np.load(filePath_x)
 				print(feature_x.shape)
+				frameOffset = 5
+				frameStart = featureSplit[6]-frameOffset
+				frameEnd = featureSplit[7]-frameOffset+1
+				if frameStart < 0:
+					print(f'Error: frameStart value {frameStart}')
+				print(frameEnd,frameStart,featureSplit[7],featureSplit[6],
+					frameEnd-frameStart,featureSplit[7]-featureSplit[6])
+				# feature_x[frameStart:frameEnd,:]
 				# y.append()
 				# print(f'{filePath_x}')
 			else:
