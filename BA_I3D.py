@@ -35,6 +35,8 @@ def LoadData():
 		if frameEnd > featureVideo.shape[0]:
 			print(f'Error: frameEnd value {frameEnd}', 
 				f'featureVideo.shape[0] {featureVideo.shape[0]}')
+			print(featureSplit)
+			quit()
 			continue
 		# print(frameEnd,frameStart,featureSplit[7],featureSplit[6],
 		# 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
