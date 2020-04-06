@@ -20,9 +20,10 @@ def LoadData():
 				featureSplit[1] + '_' + 
 				featureSplit[2] + '.npy')
 			if os.path.exists(filePath_x):
-				# np.load(filePath_x)
+				feature_x = np.load(filePath_x)
+				print(feature_x.shape)
 				# y.append()
-				print(f'{filePath_x}')
+				# print(f'{filePath_x}')
 			else:
 				print(f'File not found: {filePath_x}')
 
