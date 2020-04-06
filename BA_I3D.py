@@ -1,21 +1,14 @@
 import numpy as np
 import os, glob
-from enum import Enum
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
-
-# class Actions(Enum):
-# 	put=0
-	# cut=0
-	# walk_in
-	# put
-	# ","spoon","peel","stir","walk_out", "smear","squeeze", "butter", "pour", "fry", "crack", "take", "add"]
 
 def LoadData():
 	x, y = list(), list()
 	for feature in os.listdir(dir_labels):
 		featureSplit = feature.split('_')
+		print(featureSplit)
 		if len(featureSplit) > 1:
 			# print(featureSplit)
 			# replace 'salad' with 'salat'
@@ -32,6 +25,7 @@ def LoadData():
 				print(f'{filePath_x}')
 			else:
 				print(f'File not found: {filePath_x}')
+
 			break
 		# glob.glob()
 		# break
