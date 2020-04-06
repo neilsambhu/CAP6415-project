@@ -32,6 +32,7 @@ def LoadData():
 				print(f'{filePath_x}')
 			else:
 				print(f'File not found: {filePath_x}')
+			break
 		# glob.glob()
 		# break
 	print(len(y))
