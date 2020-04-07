@@ -9,7 +9,7 @@ def LoadData():
 	x, y = list(), list()
 	for feature in tqdm(os.listdir(dir_labels)):
 		featureSplit = feature.split('_')
-		print(featureSplit)
+		# print(featureSplit)
 		if len(featureSplit) <= 1:
 			continue
 		# replace 'salad' with 'salat'
