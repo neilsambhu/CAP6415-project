@@ -4,6 +4,7 @@ from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
+np.set_printoptions(suppress=True)
 
 dir_FV = "./breakfast_data/s1/"
 
