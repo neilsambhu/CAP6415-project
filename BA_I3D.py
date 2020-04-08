@@ -47,7 +47,8 @@ def LoadData():
 	return np.array(x), np.array(y)
 def ML_Classifier(x,y):
 	clf = RandomForestClassifier(n_estimators=2)
-	clf.fit(x,y)
+	k = 1000
+	clf.fit(x[:k,:],y[:k])
 	print(clf.feature_importances_)
 
 def main():
