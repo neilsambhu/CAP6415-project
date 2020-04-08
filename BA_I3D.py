@@ -46,6 +46,7 @@ def LoadData():
 		y.extend([featureSplit[-2]] * frameCount)
 	return np.array(x), np.array(y)
 def ML_Classifier(x,y):
+	print(y[:k])
 	clf = RandomForestClassifier(n_estimators=2)
 	k = 1000
 	clf.fit(x[:k,:],y[:k])
