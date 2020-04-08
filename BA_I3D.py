@@ -53,13 +53,15 @@ def ML_Classifier(x,y):
 	# from collections import Counter
 	# print(Counter(y).keys())
 	# print(Counter(y).values())
-	clf.fit(x[:k,:],y[:k])
-	# clf.fit(x,y)
+	# clf.fit(x[:k,:],y[:k])
+	clf.fit(x,y)
 	# for item in clf.feature_importances_:
 	# 	print(item, end=" ")
 	
-	y_true = y[:k]
-	y_pred = clf.predict(x[:k,:])
+	# y_true = y[:k]
+	# y_pred = clf.predict(x[:k,:])
+	y_true = y
+	y_pred = clf.predict(x)
 	print(accuracy_score(y_true,y_pred))
 	print(confusion_matrix(y_true,y_pred))
 
