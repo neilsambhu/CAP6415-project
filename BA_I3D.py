@@ -67,7 +67,10 @@ def ML_Classifier(x,y,n_estimators=1):
 
 def main():
 	x,y = LoadData()
-	ML_Classifier(x,y)
+	print('10 trees')
+	ML_Classifier(x,y,10)
+	print('100 trees')
+	ML_Classifier(x,y,100)
 
 if __name__ == '__main__':
 	main()
