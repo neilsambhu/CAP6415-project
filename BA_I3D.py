@@ -1,6 +1,7 @@
 import numpy as np
 import os, glob
 from tqdm import tqdm
+from sklearn.ensemble import RandomForestClassifier
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
@@ -43,10 +44,14 @@ def LoadData():
 		# print(feature_x.shape)
 		x.extend(feature_x)
 		y.extend([featureSplit[-2]] * frameCount)
-	print(np.array(x).shape, np.array(y).shape)
-
+	return np.array(x), np.array(y)
+def ML_Classifier(x,y):
+	clf = RandomForestClassifier()
+	clf.fit(x,y)
+	print(clf.feature_importances_)
 def main():
-	LoadData()
+	x,y = LoadData()
+	ML_Classifier(x,y)
 
 if __name__ == '__main__':
 	main()
