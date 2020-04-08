@@ -47,8 +47,8 @@ def LoadData():
 		x.extend(feature_x)
 		y.extend([featureSplit[4]] * frameCount)
 	return np.array(x), np.array(y)
-def ML_Classifier(x,y):
-	clf = RandomForestClassifier(n_estimators=1)
+def ML_Classifier(x,y,n_estimators=1):
+	clf = RandomForestClassifier(n_estimators=n_estimators)
 	k = 1000
 	# from collections import Counter
 	# print(Counter(y).keys())
