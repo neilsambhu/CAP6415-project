@@ -12,6 +12,7 @@ def LoadData():
 	for feature in tqdm(os.listdir(dir_FV)):
 		dir_objects = os.path.join(dir_FV, feature)
 		for file in os.listdir(dir_objects):
+			print(file)
 			temp = np.loadtxt(os.path.join(dir_objects,file))
 			print(temp.shape)
 			break
