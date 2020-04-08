@@ -53,8 +53,9 @@ def ML_Classifier(x,y):
 	# print(Counter(y).values())
 	clf.fit(x[:k,:],y[:k])
 	# clf.fit(x,y)
-	# print(clf.feature_importances_)
-	print(clf.predict(x[:k,:]))
+	for item in clf.feature_importances_:
+		print(item, end=" ")
+	# print(clf.predict(x[:k,:]))
 
 def main():
 	x,y = LoadData()
