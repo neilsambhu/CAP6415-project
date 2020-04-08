@@ -46,9 +46,10 @@ def LoadData():
 		y.extend([featureSplit[-2]] * frameCount)
 	return np.array(x), np.array(y)
 def ML_Classifier(x,y):
-	clf = RandomForestClassifier()
+	clf = RandomForestClassifier(n_estimators=2)
 	clf.fit(x,y)
 	print(clf.feature_importances_)
+
 def main():
 	x,y = LoadData()
 	ML_Classifier(x,y)
