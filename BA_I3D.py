@@ -2,6 +2,7 @@ import numpy as np
 import os, glob
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
@@ -53,9 +54,10 @@ def ML_Classifier(x,y):
 	# print(Counter(y).values())
 	clf.fit(x[:k,:],y[:k])
 	# clf.fit(x,y)
-	for item in clf.feature_importances_:
-		print(item, end=" ")
-	# print(clf.predict(x[:k,:]))
+	# for item in clf.feature_importances_:
+	# 	print(item, end=" ")
+	y_pred = clf.predict(x[:k,:])
+	print(accuracy_score(y,y_pred))
 
 def main():
 	x,y = LoadData()
