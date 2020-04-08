@@ -43,7 +43,9 @@ def LoadData():
 		feature_x = featureVideo[frameStart:frameEnd,:]
 		# print(feature_x.shape)
 		x.extend(feature_x)
+		print([featureSplit[-2]] * frameCount)
 		y.extend([featureSplit[-2]] * frameCount)
+		break
 	return np.array(x), np.array(y)
 def ML_Classifier(x,y):
 	clf = RandomForestClassifier(n_estimators=2)
@@ -58,7 +60,7 @@ def ML_Classifier(x,y):
 
 def main():
 	x,y = LoadData()
-	ML_Classifier(x,y)
+	# ML_Classifier(x,y)
 
 if __name__ == '__main__':
 	main()
