@@ -10,7 +10,10 @@ dir_FV = "./breakfast_data/s1/"
 def LoadData():
 	x, y = list(), list()
 	for feature in tqdm(os.listdir(dir_FV)):
-		print(feature)
+		dir_object = os.path.join(dir_FV, feature)
+		temp = np.loadtxt(dir_object)
+		print(temp.shape)
+		break
 		featureSplit = feature.split('_')
 		# print(featureSplit)
 		if len(featureSplit) <= 1:
