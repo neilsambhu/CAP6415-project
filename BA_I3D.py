@@ -43,16 +43,14 @@ def LoadData():
 		feature_x = featureVideo[frameStart:frameEnd,:]
 		# print(feature_x.shape)
 		x.extend(feature_x)
-		# print([featureSplit[4]] * frameCount)
 		y.extend([featureSplit[4]] * frameCount)
-		# break
 	return np.array(x), np.array(y)
 def ML_Classifier(x,y):
 	clf = RandomForestClassifier(n_estimators=2)
 	k = 1000
 	from collections import Counter
-	print(Counter(y[:k]).keys())
-	print(Counter(y[:k]).values())
+	print(Counter(y).keys())
+	print(Counter(y).values())
 	clf.fit(x[:k,:],y[:k])
 	# clf.fit(x,y)
 	# print(clf.feature_importances_)
