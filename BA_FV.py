@@ -10,10 +10,11 @@ dir_FV = "./breakfast_data/s1/"
 def LoadData():
 	x, y = list(), list()
 	for feature in tqdm(os.listdir(dir_FV)):
-		dir_object = os.path.join(dir_FV, feature)
-		print(dir_object)
-		temp = np.loadtxt(dir_object)
-		print(temp.shape)
+		dir_objects = os.path.join(dir_FV, feature)
+		for file in os.listdir(dir_objects):
+			temp = np.loadtxt(os.path.join(dir_objects,file))
+			print(temp.shape)
+			break
 		break
 		featureSplit = feature.split('_')
 		# print(featureSplit)
