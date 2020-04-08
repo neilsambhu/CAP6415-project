@@ -3,6 +3,7 @@ import os, glob
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
@@ -56,8 +57,11 @@ def ML_Classifier(x,y):
 	# clf.fit(x,y)
 	# for item in clf.feature_importances_:
 	# 	print(item, end=" ")
+	
+	y_true = y[:k]
 	y_pred = clf.predict(x[:k,:])
-	print(accuracy_score(y[:k],y_pred))
+	print(accuracy_score(y_true,y_pred))
+	print(confusion_matrix(y_true,y_pred))
 
 def main():
 	x,y = LoadData()
