@@ -57,7 +57,7 @@ def ML_Classifier(x,y):
 	# for item in clf.feature_importances_:
 	# 	print(item, end=" ")
 	y_pred = clf.predict(x[:k,:])
-	print(accuracy_score(y,y_pred))
+	print(accuracy_score(y[:k],y_pred))
 
 def main():
 	x,y = LoadData()
