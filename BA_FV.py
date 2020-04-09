@@ -16,7 +16,7 @@ def LoadData():
 			print(file)
 			temp = np.loadtxt(os.path.join(dir_objects,file))
 			print(temp)
-			print(temp.shape)
+			print(temp[:,1:].shape)
 			break
 		break
 		featureSplit = feature.split('_')
