@@ -15,7 +15,7 @@ def LoadData():
 		for file in os.listdir(dir_objects):
 			print(file)
 			temp = np.loadtxt(os.path.join(dir_objects,file))
-			print(temp)
+			print(temp[:,1:])
 			print(temp[:,1:].shape)
 			break
 		break
