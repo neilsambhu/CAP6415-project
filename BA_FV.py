@@ -16,9 +16,9 @@ def LoadData():
 			file = np.loadtxt(os.path.join(dir_objects,fileName))
 			x.extend(file[:,1:])
 			y.extend(feature)
-			break
+			# break
 		break
-	print(x.shape,y.shape)
+	print(np.array(x).shape,np.array(y).shape)
 	return np.array(x), np.array(y)
 def ML_Classifier(x,y,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
