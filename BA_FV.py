@@ -9,19 +9,26 @@ np.set_printoptions(suppress=True)
 dir_FV = "./breakfast_data/s1/"
 
 def LoadData():
-	x, y = list(), list()
+	x_test, y_test = list(), list()
+	x_train, y_train = list(), list()
 	for feature in tqdm(os.listdir(dir_FV)):
 		dir_objects = os.path.join(dir_FV, feature)
 		for fileName in os.listdir(dir_objects):
 			fileNameSplit = fileName.split('_')
-			print(int(fileNameSplit[0][1:])<16)
 			file = np.loadtxt(os.path.join(dir_objects,fileName))
-			x.extend(file[:,1:])
-			y.extend([feature] * file[:,1:].shape[0])
+			# test
+			if int(fileNameSplit[0][1:]) < 16:
+				x_test.extend(file[:,1:])
+				y_test.extend([feature] * file[:,1:].shape[0])
+			else:
+				x_train.extend(file[:,1:])
+				y_train.extend([feature] * file[:,1:].shape[0])
 			# break
 		# break
-	# print(np.array(x).shape,np.array(y).shape)
-	return np.array(x), np.array(y)
+	print(np.array(x_test).shape,np.array(y_test).shape,
+		np.array(x_train).shape,np.array(y_train).shape)
+	return np.array(x_test), np.array(y_test), 
+		np.array(x_train), np.array(y_train)
 def ML_Classifier(x,y,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
 	k = 1000
