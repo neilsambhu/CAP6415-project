@@ -60,7 +60,8 @@ def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for person in tqdm(os.listdir(dir_labels)):
-		print(person)
+		dir_person = os.path.join(dir_labels,person)
+		print(dir_person)
 		quit()
 		featureSplit = feature.split('_')
 		if len(featureSplit) <= 1:
