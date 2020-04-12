@@ -63,8 +63,9 @@ def LoadData2():
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
-			print(dir_cam)
-		quit()
+			for fileLabel in glob.glob('*.labels'):
+				print(fileLabel)
+			quit()
 		featureSplit = feature.split('_')
 		if len(featureSplit) <= 1:
 			continue
