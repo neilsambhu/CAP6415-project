@@ -13,7 +13,6 @@ def LoadData():
 	x_train, y_train = list(), list()
 	for feature in tqdm(os.listdir(dir_labels)):
 		featureSplit = feature.split('_')
-		# print(featureSplit)
 		if len(featureSplit) <= 1:
 			continue
 		# replace 'salad' with 'salat'
@@ -45,8 +44,9 @@ def LoadData():
 		# 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
 		feature_x = featureVideo[frameStart:frameEnd,:]
 		# print(feature_x.shape)
-		x.extend(feature_x)
-		y.extend([featureSplit[4]] * frameCount)
+		print(featureSplit)
+		# x.extend(feature_x)
+		# y.extend([featureSplit[4]] * frameCount)
 	return np.array(x), np.array(y)
 def ML_Classifier(x,y,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
