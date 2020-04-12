@@ -44,7 +44,7 @@ def LoadData():
 		# 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
 		feature_x = featureVideo[frameStart:frameEnd,:]
 		# print(feature_x.shape)
-		print(featureSplit)
+		print(featureSplit[1][1:])
 		# x.extend(feature_x)
 		# y.extend([featureSplit[4]] * frameCount)
 	return np.array(x), np.array(y)
