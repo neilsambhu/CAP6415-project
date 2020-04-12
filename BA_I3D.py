@@ -63,8 +63,8 @@ def LoadData2():
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
-			filesLabelsRegex = print(os.path.join(
-				dir_cam,'*.labels'))
+			filesLabelsRegex = os.path.join(
+				dir_cam,'*.labels')
 			print(filesLabelsRegex)
 			# filesLabels = [glob.glob(dir_cam)]
 			# print(filesLabels)
@@ -136,7 +136,7 @@ def ML_Classifier(x_test,y_test,
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
-	# ML_Classifier(x_test,y_test,x_train,y_train)
+	ML_Classifier(x_test,y_test,x_train,y_train)
 	# print('10 trees')
 	# ML_Classifier(x,y,10)
 	# print('100 trees')
