@@ -66,7 +66,7 @@ def LoadData2():
 			filesLabelsRegex = print(os.path.join(
 				dir_cam,'*.labels'))
 			print(filesLabelsRegex)
-			filesLabels = [glob.glob(dir_cam)]
+			# filesLabels = [glob.glob(dir_cam)]
 			# print(filesLabels)
 			quit()
 			for fileLabel in glob.glob('*.labels'):
