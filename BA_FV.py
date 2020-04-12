@@ -14,7 +14,7 @@ def LoadData():
 		dir_objects = os.path.join(dir_FV, feature)
 		for fileName in os.listdir(dir_objects):
 			fileNameSplit = fileName.split('_')
-			print(fileNameSplit[0][1:])
+			print(int(fileNameSplit[0][1:])<16)
 			file = np.loadtxt(os.path.join(dir_objects,fileName))
 			x.extend(file[:,1:])
 			y.extend([feature] * file[:,1:].shape[0])
