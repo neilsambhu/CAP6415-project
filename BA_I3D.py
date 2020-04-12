@@ -59,8 +59,8 @@ def LoadData():
 def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
-	for videoName in tqdm(os.listdir(dir_labels)):
-		print(videoName)
+	for person in tqdm(os.listdir(dir_labels)):
+		print(person)
 		quit()
 		featureSplit = feature.split('_')
 		if len(featureSplit) <= 1:
