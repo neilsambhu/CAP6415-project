@@ -1,5 +1,5 @@
 import numpy as np
-import os, glob
+import os, glob, re
 from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
@@ -63,9 +63,13 @@ def LoadData2():
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
+			filesLabels = [f for f in 
+				os.listdir(dir_cam)
+				if re.match(r'*.labels',f)]
+			print(filesLabels)
+			quit()
 			for fileLabel in glob.glob('*.labels'):
 				print(fileLabel)
-			quit()
 		featureSplit = feature.split('_')
 		if len(featureSplit) <= 1:
 			continue
