@@ -13,6 +13,8 @@ def LoadData():
 	for feature in tqdm(os.listdir(dir_FV)):
 		dir_objects = os.path.join(dir_FV, feature)
 		for fileName in os.listdir(dir_objects):
+			fileNameSplit = fileName.split('_')
+			print(fileNameSplit)
 			file = np.loadtxt(os.path.join(dir_objects,fileName))
 			x.extend(file[:,1:])
 			y.extend([feature] * file[:,1:].shape[0])
