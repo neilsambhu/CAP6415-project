@@ -44,34 +44,44 @@ def LoadData():
 		# 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
 		feature_x = featureVideo[frameStart:frameEnd,:]
 		# print(feature_x.shape)
-		print(int(featureSplit[1][1:])<16)
-		# x.extend(feature_x)
-		# y.extend([featureSplit[4]] * frameCount)
-	return np.array(x), np.array(y)
-def ML_Classifier(x,y,n_estimators=1):
+		# test
+		if int(featureSplit[1][1:]) < 16:
+			x_test.extend(feature_x)
+			y_test.extend([featureSplit[4]] * frameCount)
+		# train
+		else:
+			x_train.extend(feature_x)
+			y_train.extend([featureSplit[4]] * frameCount)
+	print(np.array(x_test).shape,np.array(y_test).shape,
+		np.array(x_train).shape,np.array(y_train).shape)
+	return np.array(x_test),np.array(y_test), \
+		np.array(x_train),np.array(y_train)
+def ML_Classifier(x_test,y_test,
+	x_train,y_train,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
 	k = 1000
 	# from collections import Counter
 	# print(Counter(y).keys())
 	# print(Counter(y).values())
 	# clf.fit(x[:k,:],y[:k])
-	clf.fit(x,y)
+	clf.fit(x_train,y_train)
 	# for item in clf.feature_importances_:
 	# 	print(item, end=" ")
 	
 	# y_true = y[:k]
 	# y_pred = clf.predict(x[:k,:])
-	y_true = y
-	y_pred = clf.predict(x)
+	y_true = y_test
+	y_pred = clf.predict(x_test)
 	print(accuracy_score(y_true,y_pred))
 	print(confusion_matrix(y_true,y_pred))
 
 def main():
-	x,y = LoadData()
-	print('10 trees')
-	ML_Classifier(x,y,10)
-	print('100 trees')
-	ML_Classifier(x,y,100)
+	x_test,y_test,x_train,y_train = LoadData()
+	ML_Classifier(x_test,y_test,x_train,y_train)
+	# print('10 trees')
+	# ML_Classifier(x,y,10)
+	# print('100 trees')
+	# ML_Classifier(x,y,100)
 
 if __name__ == '__main__':
 	main()
