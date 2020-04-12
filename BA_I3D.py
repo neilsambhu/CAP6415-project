@@ -64,8 +64,8 @@ def LoadData2():
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
 			filesLabels = [f for f in 
-				os.listdir(dir_cam)
-				if re.match(r'*.labels',f)]
+				os.listdir(dir_cam)]
+				# if re.match(r'*.labels',f)]
 			print(filesLabels)
 			quit()
 			for fileLabel in glob.glob('*.labels'):
