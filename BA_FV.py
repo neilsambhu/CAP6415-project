@@ -51,7 +51,7 @@ def ML_Classifier(x_test,y_test,
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData()
-	ML_Classifier(x,y)
+	ML_Classifier(x_test,y_test,x_train,y_train)
 
 if __name__ == '__main__':
 	main()
