@@ -63,10 +63,11 @@ def LoadData2():
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
-			filesLabels = [f for f in 
-				os.listdir(dir_cam)]
-				# if re.match(r'*.labels',f)]
-			print(filesLabels)
+			filesLabelsRegex = print(os.path.join(
+				dir_cam,'*.labels'))
+			print(filesLabelsRegex)
+			filesLabels = [os.glob(dir_cam)]
+			# print(filesLabels)
 			quit()
 			for fileLabel in glob.glob('*.labels'):
 				print(fileLabel)
