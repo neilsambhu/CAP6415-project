@@ -51,7 +51,10 @@ def ML_Classifier(x_test,y_test,
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData()
-	ML_Classifier(x_test,y_test,x_train,y_train)
+	print('10 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,10)
+	print('100 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,100)
 
 if __name__ == '__main__':
 	main()
