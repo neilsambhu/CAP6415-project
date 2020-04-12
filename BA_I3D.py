@@ -136,7 +136,7 @@ def ML_Classifier(x_test,y_test,
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
-	ML_Classifier(x_test,y_test,x_train,y_train)
+	# ML_Classifier(x_test,y_test,x_train,y_train)
 	# print('10 trees')
 	# ML_Classifier(x,y,10)
 	# print('100 trees')
