@@ -69,8 +69,10 @@ def LoadData2():
 			for fileLabels in glob.glob(filesLabelsRegex):
 				with open(fileLabels) as fp:
 					line = fp.readline()
-					print(line.split(' '))
-			quit()
+					while line:
+						print(line.split(' '))
+						line = fp.readline()
+					quit()
 			for fileLabel in glob.glob('*.labels'):
 				print(fileLabel)
 		featureSplit = feature.split('_')
