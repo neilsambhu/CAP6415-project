@@ -60,7 +60,7 @@ def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for videoName in tqdm(os.listdir(dir_labels)):
-		print(feature)
+		print(videoName)
 		quit()
 		featureSplit = feature.split('_')
 		if len(featureSplit) <= 1:
