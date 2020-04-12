@@ -67,7 +67,9 @@ def LoadData2():
 				dir_cam,'*.labels')
 			# print(filesLabelsRegex)
 			for fileLabels in glob.glob(filesLabelsRegex):
-				print(fileLabels)
+				with open(fileLabels) as fp:
+					line = fp.readline()
+					print(line.split(' '))
 			quit()
 			for fileLabel in glob.glob('*.labels'):
 				print(fileLabel)
