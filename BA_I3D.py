@@ -87,7 +87,7 @@ def LoadData2():
 						if frameStart < 0:
 							frameStart = 0
 						if frameEnd < 1:
-							print('Warning: frameEnd < 0')
+							print(f'Warning: frameEnd value {frameEnd}')
 							line = fp.readline()
 							continue
 						line = fp.readline()
