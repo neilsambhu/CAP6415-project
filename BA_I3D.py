@@ -67,6 +67,7 @@ def LoadData2():
 				dir_cam,'*.labels')
 			# print(filesLabelsRegex)
 			for fileLabels in glob.glob(filesLabelsRegex):
+				print(fileLabels)
 				with open(fileLabels) as fp:
 					line = fp.readline()
 					while line:
@@ -90,6 +91,10 @@ def LoadData2():
 							print(f'Warning: frameEnd value {frameEnd}')
 							line = fp.readline()
 							continue
+						# get npy lines
+						# build file path to npy
+						# filePath_y = os.path.join(dir_I3D,
+						# 	f'{person}_{cam}_{person}_{ac')
 						line = fp.readline()
 	quit()
 		# featureSplit = feature.split('_')
