@@ -70,6 +70,10 @@ def LoadData2():
 				objectLabel = fileLabels.split('/')[-1].split('.')[0].split('_')[1]
 				with open(fileLabels) as fp:
 					line = fp.readline()
+					# build file path to npy
+					filePath_y = os.path.join(dir_I3D,
+						f'{person}_{cam}_{person}_{objectLabel}.npy')
+					print(filePath_y)
 					while line:
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
@@ -96,10 +100,6 @@ def LoadData2():
 							line = fp.readline()
 							continue
 						# get npy lines
-						# build file path to npy
-						filePath_y = os.path.join(dir_I3D,
-							f'{person}_{cam}_{person}_{objectLabel}.npy')
-						print(filePath_y)
 						line = fp.readline()
 	quit()
 		# featureSplit = feature.split('_')
