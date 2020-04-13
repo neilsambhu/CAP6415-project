@@ -76,7 +76,8 @@ def LoadData2():
 						camName = 'stereo01'
 					filePath_y = os.path.join(dir_I3D,
 						f'{person}_{camName}_{person}_{objectLabel}.npy')
-					print(os.path.exists(filePath_y), filePath_y)
+					if !os.path.exists(filePath_y):
+						print(filePath_y)
 					while line:
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
