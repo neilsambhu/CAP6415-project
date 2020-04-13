@@ -74,7 +74,7 @@ def LoadData2():
 						actionLabel = lineSplit[1]
 						frameSplit = lineSplit[0].split('-')
 						if frameSplit[0] == frameSplit[1]:
-							print(actionLabel)
+							print(frameSplit[0],actionLabel)
 							line = fp.readline()
 							continue
 						line = fp.readline()
