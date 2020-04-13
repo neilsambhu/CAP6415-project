@@ -73,8 +73,21 @@ def LoadData2():
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
 						frameSplit = lineSplit[0].split('-')
-						if frameSplit[0] == frameSplit[1]:
+						frameStart = frameSplit[0]
+						frameEnd = frameSplit[1]
+						# check if frames are the same
+						# and action doesn't matter
+						if frameStart == frameEnd:
 							print(frameSplit[0],actionLabel)
+							line = fp.readline()
+							continue
+						frameOffset = 5
+						frameStart -= frameOffset
+						frameEnd -= frameOffset + 1
+						if frameStart < 0:
+							frameStart = 0
+						if frameEnd < 1:
+							print('Warning: frameEnd < 0')
 							line = fp.readline()
 							continue
 						line = fp.readline()
