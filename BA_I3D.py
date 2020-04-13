@@ -73,7 +73,7 @@ def LoadData2():
 					# build file path to npy
 					filePath_y = os.path.join(dir_I3D,
 						f'{person}_{cam}_{person}_{objectLabel}.npy')
-					print(filePath_y)
+					print(os.path.exists(filePath_y))
 					while line:
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
