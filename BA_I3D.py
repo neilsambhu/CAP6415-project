@@ -67,7 +67,7 @@ def LoadData2():
 				dir_cam,'*.labels')
 			# print(filesLabelsRegex)
 			for fileLabels in glob.glob(filesLabelsRegex):
-				print(fileLabels.split('/')[-1].split('.')[0].split('_')[1])
+				objectLabel = fileLabels.split('/')[-1].split('.')[0].split('_')[1]
 				with open(fileLabels) as fp:
 					line = fp.readline()
 					while line:
@@ -93,8 +93,9 @@ def LoadData2():
 							continue
 						# get npy lines
 						# build file path to npy
-						# filePath_y = os.path.join(dir_I3D,
-						# 	f'{person}_{cam}_{person}_{ac')
+						filePath_y = os.path.join(dir_I3D,
+							f'{person}_{cam}_{person}_{actionLabel}.npy')
+						print(filePath_y)
 						line = fp.readline()
 	quit()
 		# featureSplit = feature.split('_')
