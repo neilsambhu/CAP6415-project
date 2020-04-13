@@ -98,7 +98,7 @@ def LoadData2():
 						# get npy lines
 						# build file path to npy
 						filePath_y = os.path.join(dir_I3D,
-							f'{person}_{cam}_{person}_{actionLabel}.npy')
+							f'{person}_{cam}_{person}_{objectLabel}.npy')
 						print(filePath_y)
 						line = fp.readline()
 	quit()
