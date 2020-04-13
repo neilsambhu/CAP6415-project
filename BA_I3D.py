@@ -73,6 +73,10 @@ def LoadData2():
 					while line:
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
+						# skip SIL
+						if actionLabel == 'SIL':
+							line = fp.readline()
+							continue
 						frameSplit = lineSplit[0].split('-')
 						frameStart = int(frameSplit[0])
 						frameEnd = int(frameSplit[1])
