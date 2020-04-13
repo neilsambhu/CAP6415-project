@@ -73,8 +73,8 @@ def LoadData2():
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
 						frameSplit = lineSplit[0].split('-')
-						frameStart = frameSplit[0]
-						frameEnd = frameSplit[1]
+						frameStart = int(frameSplit[0])
+						frameEnd = int(frameSplit[1])
 						# check if frames are the same
 						# and action doesn't matter
 						if frameStart == frameEnd:
