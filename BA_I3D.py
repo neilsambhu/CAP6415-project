@@ -71,8 +71,11 @@ def LoadData2():
 				with open(fileLabels) as fp:
 					line = fp.readline()
 					# build file path to npy
+					camName = cam
+					if camName == 'stereo':
+						camName = 'stereo01'
 					filePath_y = os.path.join(dir_I3D,
-						f'{person}_{cam}_{person}_{objectLabel}.npy')
+						f'{person}_{camName}_{person}_{objectLabel}.npy')
 					print(os.path.exists(filePath_y), filePath_y)
 					while line:
 						lineSplit = line.split(' ')
