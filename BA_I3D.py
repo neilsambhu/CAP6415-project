@@ -71,12 +71,15 @@ def LoadData2():
 					line = fp.readline()
 					while line:
 						lineSplit = line.split(' ')
+						actionLabel = lineSplit[1]
 						frameSplit = lineSplit[0].split('-')
-						print(frameSplit)
+						if frameSplit[0] == frameSplit[1]:
+							print(actionLabel)
+							line = fp.readline()
+							continue
 						line = fp.readline()
-					quit()
-			for fileLabel in glob.glob('*.labels'):
-				print(fileLabel)
+	quit()
+
 		featureSplit = feature.split('_')
 		if len(featureSplit) <= 1:
 			continue
