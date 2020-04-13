@@ -70,7 +70,9 @@ def LoadData2():
 				with open(fileLabels) as fp:
 					line = fp.readline()
 					while line:
-						print(line.split(' '))
+						lineSplit = line.split(' ')
+						frameSplit = lineSplit[0].split('-')
+						print(frameSplit)
 						line = fp.readline()
 					quit()
 			for fileLabel in glob.glob('*.labels'):
