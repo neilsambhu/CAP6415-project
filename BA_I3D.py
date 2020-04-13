@@ -79,7 +79,7 @@ def LoadData2():
 						# check if frames are the same
 						# and action doesn't matter
 						if frameStart == frameEnd:
-							print(frameSplit[0],actionLabel)
+							# print(frameSplit[0],actionLabel)
 							line = fp.readline()
 							continue
 						frameOffset = 5
@@ -88,7 +88,7 @@ def LoadData2():
 						if frameStart < 0:
 							frameStart = 0
 						if frameEnd < 1:
-							print(f'Warning: frameEnd value {frameEnd}')
+							# print(f'Warning: frameEnd value {frameEnd}')
 							line = fp.readline()
 							continue
 						# get npy lines
