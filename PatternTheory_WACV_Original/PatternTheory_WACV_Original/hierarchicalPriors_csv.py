@@ -40,6 +40,9 @@ def getEquivalence(item, rel, cnet):
 
 def getPriors(item, equivalentDict, cnet):
 	priors = []
+ 
+	# print('item*:', item)
+	# print('Equivalent dict: ', equivalentDict)
 
 	for item1, weight in equivalentDict.iteritems():
 		# print item, item1
@@ -50,6 +53,7 @@ def getPriors(item, equivalentDict, cnet):
 			print '/'.join(i)
 		# url = 'http://api.conceptnet.io/query?node=/c/en/' + item + '&other=' + '/'.join(i)
 		# print url
+		# print('i: ', i)
 		try:
 			# obj = requests.get(url).json()
 			obj = cnet.query_edge(item, '/'.join(i))
@@ -70,65 +74,17 @@ def getPriors(item, equivalentDict, cnet):
 	# print priors
 	return np.linalg.norm(priors)
 
-# outputFilePath = "./"
-# outputFileNameSuffix = "contextualPriors"
-
-# actions = ["cut","walk_in","spoon","peel","stir","walk_out", "smear","put","squeeze", "butter", "pour", "fry", "crack", "take", "add"]
-# # actions = ["spoon","peel"]
-# objects = ["topping", "topping_on_top", "coffee", "teabag", "plate", "eggs", "juice", "salt_and_pepper", "milk", "powder", "bun_together", "fruit", "tea", "pancake", "cereals", "sugar", "bun", "bowl", "egg", "glass", "water", "orange", "pan", "cup", "oil", "dough", "flour", "squeezer", "butter", "knife"]
-
-# rel = 'rel=/r/IsA'
-
-# item1 = 'oil'
-# item2 = 'pour'
-
-# equivalent = {}
-# priors = {'HC_IsA': {}}
-
-# cnet = ConceptNet("output_edges.csv")
-
-# print "Obtaining Equivalents ..."
-# for item1 in objects:
-# 	e = getEquivalence(item1, rel, cnet)
-# 	equivalent[item1] = e
-
-# print "Constructing priors table ..."
-
-# outputFileName = outputFilePath + outputFileNameSuffix + "_Action_Object_HC_IsA.txt"
-# target = open(outputFileName, 'w')
-
-# for item2 in actions:
-# 	target.write(item2 + ",")
-# 	for label, e in equivalent.iteritems():
-# 		p = getPriors(item2, e, cnet)
-# 		# priors['HC_IsA'][item2][label] = p
-# 		target.write(label + ":" + str(p) + ",")
-# 		# print item2, label, p
-# 	target.seek(-1, os.SEEK_END)
-# 	target.truncate()
-# 	target.write("\n")
-# target.close()
-
-
-# # print "Writing priors table to file ..."
-
-# writePriors(priors, outputFileName)
-# # print item1, item2, p
-
-outputFilePath = "./HRC_Priors/"
-outputFileNameSuffix = "cmu_contextualPriors"
-
-if not os.path.exists(outputFilePath):
-    os.makedirs(outputFilePath)
+outputFilePath = "./HRC_Priors/OnlyHC_IsA/"
+outputFileNameSuffix = "contextualPriors"
 
 actions = ["cut","walk_in","spoon","peel","stir","walk_out", "smear","put","squeeze", "butter", "pour", "fry", "crack", "take", "add"]
-actions = ["crack", "take", "add"]
+# actions = ["spoon","peel"]
 objects = ["topping", "topping_on_top", "coffee", "teabag", "plate", "eggs", "juice", "salt_and_pepper", "milk", "powder", "bun_together", "fruit", "tea", "pancake", "cereals", "sugar", "bun", "bowl", "egg", "glass", "water", "orange", "pan", "cup", "oil", "dough", "flour", "squeezer", "butter", "knife"]
 
-actions = ["stir", "crack", "spray", "twist", "take", "pour", "open", "switch", "walk", "put", "close", "read"]
-objects = ["baking_pan", "bowl", "box", "bag", "egg", "fork", "measuring_cup", "oil", "pan", "scissors", "fridge", "oven", "cap", "knife"]
+rel = ['IsA']
 
-rel = 'rel=/r/IsA'
+#item1 = 'oil'
+#item2 = 'pour'
 
 equivalent = {}
 priors = {'HC_IsA': {}}
@@ -142,22 +98,74 @@ for item1 in objects:
 
 print "Constructing priors table ..."
 
-outputFileName = outputFilePath + outputFileNameSuffix + "_Action_Object_HC_HasProperty.txt"
-target = open(outputFileName, 'w+')
+outputFileName = outputFilePath + outputFileNameSuffix + "_Action_Object_HC_IsA.txt"
+print('output: ', outputFileName)
+target = open(outputFileName, 'w')
+
 
 for item2 in actions:
-	target.write(item2 + ",")
-	for label, e in equivalent.iteritems():
+    print('item: ', item2)
+    # target.write(item2 + ",")
+    target.write(item2)
+    for label, e in equivalent.iteritems():
 		p = getPriors(item2, e, cnet)
-
-		target.write(label + ":" + str(p) + ",")
-
-	target.seek(-1, os.SEEK_END)
-	target.truncate()
-	target.write("\n")
+		# target.write(label + ":" + str(p) + ",")
+		target.write(","+label+":" + str(p))
+    target.write("\n")
+target.seek(-1, os.SEEK_END)
+target.truncate()
+target.write("\n")
 target.close()
 
 
 print "Writing priors table to file ..."
 
 writePriors(priors, outputFileName)
+ # print item1, item2, p
+
+#outputFilePath = "./HRC_Priors/"
+#outputFileNameSuffix = "cmu_contextualPriors"
+
+#if not os.path.exists(outputFilePath):
+#    os.makedirs(outputFilePath)
+
+#actions = ["cut","walk_in","spoon","peel","stir","walk_out", "smear","put","squeeze", "butter", "pour", "fry", "crack", "take", "add"]
+#actions = ["crack", "take", "add"]
+#objects = ["topping", "topping_on_top", "coffee", "teabag", "plate", "eggs", "juice", "salt_and_pepper", "milk", "powder", "bun_together", "fruit", "tea", "pancake", "cereals", "sugar", "bun", "bowl", "egg", "glass", "water", "orange", "pan", "cup", "oil", "dough", "flour", "squeezer", "butter", "knife"]
+
+#actions = ["stir", "crack", "spray", "twist", "take", "pour", "open", "switch", "walk", "put", "close", "read"]
+#objects = ["baking_pan", "bowl", "box", "bag", "egg", "fork", "measuring_cup", "oil", "pan", "scissors", "fridge", "oven", "cap", "knife"]
+
+#rel = 'rel=/r/IsA'
+
+#equivalent = {}
+#priors = {'HC_IsA': {}}
+
+#cnet = ConceptNet("output_edges.csv")
+
+#print "Obtaining Equivalents ..."
+#for item1 in objects:
+#	e = getEquivalence(item1, rel, cnet)
+#	equivalent[item1] = e
+
+#print "Constructing priors table ..."
+
+#outputFileName = outputFilePath + outputFileNameSuffix + "_Action_Object_HC_HasProperty.txt"
+#target = open(outputFileName, 'w+')
+
+#for item2 in actions:
+#	target.write(item2 + ",")
+#	for label, e in equivalent.iteritems():
+#		p = getPriors(item2, e, cnet)
+#
+#		target.write(label + ":" + str(p) + ",")
+#
+#	target.seek(-1, os.SEEK_END)
+#	target.truncate()
+#	target.write("\n")
+#target.close()
+
+
+#print "Writing priors table to file ..."
+
+#writePriors(priors, outputFileName)
