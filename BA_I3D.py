@@ -77,7 +77,9 @@ def LoadData2():
 					filePath_y = os.path.join(dir_I3D,
 						f'{person}_{camName}_{person}_{objectLabel}.npy')
 					if not os.path.exists(filePath_y):
-						print(filePath_y)
+						# print(filePath_y)
+						continue
+					arr_y = np.load(filePath_y)
 					while line:
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
@@ -104,6 +106,8 @@ def LoadData2():
 							line = fp.readline()
 							continue
 						# get npy lines
+						extend_y = arr_y[frameStart:frameEnd]
+						print(extend_y.shape)
 						line = fp.readline()
 	quit()
 		# featureSplit = feature.split('_')
