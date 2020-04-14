@@ -107,8 +107,14 @@ def LoadData2():
 							continue
 						# get npy lines
 						extend_y = arr_y[frameStart:frameEnd]
-						print(extend_y.shape)
-						line = fp.readline()
+						# test
+						if int(cam) < 16:
+							x_test.extend(actionLabel)
+							y_test.extend(extend_y)
+						#train
+						else:
+							x_train.extend(actionLabel)
+							y_train..extend(extend_y)
 	quit()
 		# featureSplit = feature.split('_')
 		# if len(featureSplit) <= 1:
