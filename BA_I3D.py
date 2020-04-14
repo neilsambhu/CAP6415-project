@@ -81,6 +81,7 @@ def LoadData2():
 						continue
 					arr_y = np.load(filePath_y)
 					while line:
+						print(line)
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
 						# skip SIL
