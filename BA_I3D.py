@@ -114,7 +114,7 @@ def LoadData2():
 						#train
 						else:
 							x_train.extend(actionLabel)
-							y_train..extend(extend_y)
+							y_train.extend(extend_y)
 	quit()
 		# featureSplit = feature.split('_')
 		# if len(featureSplit) <= 1:
