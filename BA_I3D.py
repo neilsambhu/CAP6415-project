@@ -60,7 +60,6 @@ def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for person in tqdm(os.listdir(dir_labels)):
-		print(person)
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
@@ -109,7 +108,7 @@ def LoadData2():
 						# get npy lines
 						extend_y = arr_y[frameStart:frameEnd]
 						# test
-						if int(cam) < 16:
+						if int(person[1:]) < 16:
 							x_test.extend(actionLabel)
 							y_test.extend(extend_y)
 						#train
