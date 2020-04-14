@@ -59,9 +59,9 @@ def LoadData():
 def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
-	for person in os.listdir(dir_labels):
+	for person in tqdm(os.listdir(dir_labels)):
 		dir_person = os.path.join(dir_labels,person)
-		for cam in tqdm(os.listdir(dir_person)):
+		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
 			filesLabelsRegex = os.path.join(
 				dir_cam,'*.labels')
@@ -81,7 +81,6 @@ def LoadData2():
 						continue
 					arr_y = np.load(filePath_y)
 					while line:
-						print(line)
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
 						# skip SIL
