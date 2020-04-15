@@ -116,6 +116,10 @@ def LoadData2():
 						else:
 							x_train.extend([actionLabel] * frameCount)
 							y_train.extend(extend_y)
+						if np.array(x_train).shape[0] != np.array(y_train).shape[0]:
+							print(np.array(x_train).shape[0], np.array(y_train).shape[0])
+							print(fileLabels,filePath_y,frameStart,frameEnd,frameCount)
+							quit()
 						line = fp.readline()
 	# quit()
 	# featureSplit = feature.split('_')
