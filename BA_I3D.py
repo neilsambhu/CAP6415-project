@@ -107,13 +107,14 @@ def LoadData2():
 							continue
 						# get npy lines
 						extend_y = arr_y[frameStart:frameEnd]
+						frameCount = frameEnd-frameStart
 						# test
 						if int(person[1:]) < 16:
-							x_test.extend(actionLabel)
+							x_test.extend([actionLabel] * frameCount)
 							y_test.extend(extend_y)
 						#train
 						else:
-							x_train.extend(actionLabel)
+							x_train.extend([actionLabel] * frameCount)
 							y_train.extend(extend_y)
 						line = fp.readline()
 	# quit()
@@ -182,11 +183,12 @@ def ML_Classifier(x_test,y_test,
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
+	print('1 tree')
 	ML_Classifier(x_test,y_test,x_train,y_train)
-	# print('10 trees')
-	# ML_Classifier(x,y,10)
-	# print('100 trees')
-	# ML_Classifier(x,y,100)
+	print('10 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,10)
+	print('100 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,100)
 
 if __name__ == '__main__':
 	main()
