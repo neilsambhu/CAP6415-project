@@ -9,62 +9,62 @@ from sklearn import preprocessing
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
 dir_labels = '/home/DATASETS/BreakfastII_15fps_qvga_sync/'
-def LoadData():
-	x_test, y_test = list(), list()
-	x_train, y_train = list(), list()
-	for feature in tqdm(os.listdir(dir_labels)):
-		featureSplit = feature.split('_')
-		if len(featureSplit) <= 1:
-			continue
-		# replace 'salad' with 'salat'
-		if featureSplit[2] == 'salad':
-			featureSplit[2] = 'salat'
-		filePath_x = os.path.join(dir_I3D,
-			featureSplit[1] + '_' + 
-			featureSplit[3] + '_' +
-			featureSplit[1] + '_' + 
-			featureSplit[2] + '.npy')
-		if not os.path.exists(filePath_x):
-			print(f'File not found: {filePath_x}')
-			continue
-		featureVideo = np.load(filePath_x)
-		# print(featureVideo.shape)
-		frameOffset = 5
-		frameStart = int(featureSplit[-2])-frameOffset #need to do the check here
-		if frameStart < 0:
-			frameStart = 0
-		frameEnd = int(featureSplit[-1])-frameOffset+1
-		frameCount = frameEnd-frameStart
-		if frameEnd > featureVideo.shape[0]:
-			print(f'Error: frameEnd value {frameEnd}', 
-				f'featureVideo.shape[0] {featureVideo.shape[0]}')
-			print(featureSplit)
-			quit()
-			continue
-		# print(frameEnd,frameStart,featureSplit[7],featureSplit[6],
-		# 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
-		feature_x = featureVideo[frameStart:frameEnd,:]
-		# print(feature_x.shape)
-		# test
-		if int(featureSplit[1][1:]) < 16:
-			x_test.extend(feature_x)
-			y_test.extend([featureSplit[4]] * frameCount)
-		# train
-		else:
-			x_train.extend(feature_x)
-			y_train.extend([featureSplit[4]] * frameCount)
-	print(np.array(x_test).shape,np.array(y_test).shape,
-		np.array(x_train).shape,np.array(y_train).shape)
-	return np.array(x_test),np.array(y_test), \
-		np.array(x_train),np.array(y_train)
+# def LoadData():
+# 	x_test, y_test = list(), list()
+# 	x_train, y_train = list(), list()
+# 	for feature in tqdm(os.listdir(dir_labels)):
+# 		featureSplit = feature.split('_')
+# 		if len(featureSplit) <= 1:
+# 			continue
+# 		# replace 'salad' with 'salat'
+# 		if featureSplit[2] == 'salad':
+# 			featureSplit[2] = 'salat'
+# 		filePath_x = os.path.join(dir_I3D,
+# 			featureSplit[1] + '_' + 
+# 			featureSplit[3] + '_' +
+# 			featureSplit[1] + '_' + 
+# 			featureSplit[2] + '.npy')
+# 		if not os.path.exists(filePath_x):
+# 			print(f'File not found: {filePath_x}')
+# 			continue
+# 		featureVideo = np.load(filePath_x)
+# 		# print(featureVideo.shape)
+# 		frameOffset = 5
+# 		frameStart = int(featureSplit[-2])-frameOffset #need to do the check here
+# 		if frameStart < 0:
+# 			frameStart = 0
+# 		frameEnd = int(featureSplit[-1])-frameOffset+1
+# 		frameCount = frameEnd-frameStart
+# 		if frameEnd > featureVideo.shape[0]:
+# 			print(f'Error: frameEnd value {frameEnd}', 
+# 				f'featureVideo.shape[0] {featureVideo.shape[0]}')
+# 			print(featureSplit)
+# 			quit()
+# 			continue
+# 		# print(frameEnd,frameStart,featureSplit[7],featureSplit[6],
+# 		# 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
+# 		feature_x = featureVideo[frameStart:frameEnd,:]
+# 		# print(feature_x.shape)
+# 		# test
+# 		if int(featureSplit[1][1:]) < 16:
+# 			x_test.extend(feature_x)
+# 			y_test.extend([featureSplit[4]] * frameCount)
+# 		# train
+# 		else:
+# 			x_train.extend(feature_x)
+# 			y_train.extend([featureSplit[4]] * frameCount)
+# 	print(np.array(x_test).shape,np.array(y_test).shape,
+# 		np.array(x_train).shape,np.array(y_train).shape)
+# 	return np.array(x_test),np.array(y_test), \
+# 		np.array(x_train),np.array(y_train)
 def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for person in tqdm(os.listdir(dir_labels)):
-		# if person == 'P03' or person == 'P43':
-		# 	pass
-		# else:
-		# 	continue
+		if person == 'P03' or person == 'P43':
+			pass
+		else:
+			continue
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
