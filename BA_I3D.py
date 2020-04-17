@@ -4,6 +4,7 @@ from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
+from sklearn import preprocessing
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
@@ -191,10 +192,13 @@ def ML_Classifier(x_test,y_test,
 	y_pred = clf.predict(x_test)
 	print(accuracy_score(y_true,y_pred))
 	print(confusion_matrix(y_true,y_pred))
-
+def strToInt(y):
+	le = preprocessing.LabelEncoder()
+	return le.fit_transform(y)
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
-	print('1 tree')
+	y_test = strToInt(y_test)
+	y_train = strToInt(y_train)
 	ML_Classifier(x_test,y_test,x_train,y_train)
 	# print('10 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,10)
