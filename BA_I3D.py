@@ -177,7 +177,7 @@ def LoadData2():
 def ML_Classifier(x_test,y_test,
 	x_train,y_train,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
-	k = 1000
+	# k = 1000
 	# from collections import Counter
 	# print(Counter(y).keys())
 	# print(Counter(y).values())
@@ -201,7 +201,7 @@ def main():
 	x_test,y_test,x_train,y_train = LoadData2()
 	y_test = strToInt(y_test)
 	y_train = strToInt(y_train)
-	prin('1 tree')
+	print('1 tree')
 	ML_Classifier(x_test,y_test,x_train,y_train)
 	# print('10 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,10)
