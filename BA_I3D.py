@@ -225,8 +225,9 @@ def ML_Classifier(x_test,y_test,
 	y_pred = clf.predict(x_test)
 	print(accuracy_score(y_true,y_pred))
 	labels = np.unique(y_train)
+	print(labels)
 	confusionMatrix = confusion_matrix(y_true,y_pred, labels=labels)
-	print(confusionMatrix)
+	print_cm(confusionMatrix,labels)
 	print(f'confusion matrix shape {confusionMatrix.shape}')
 def strToInt(y):
 	le = preprocessing.LabelEncoder()
