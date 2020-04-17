@@ -61,10 +61,10 @@ def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for person in tqdm(os.listdir(dir_labels)):
-		if person == 'P03' or person == 'P43':
-			pass
-		else:
-			continue
+		# if person == 'P03' or person == 'P43':
+		# 	pass
+		# else:
+		# 	continue
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
@@ -202,15 +202,14 @@ def strToInt(y):
 	return le.fit_transform(y)
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
-	print(y_test)
 	# y_test = strToInt(y_test)
 	# y_train = strToInt(y_train)
 	print('1 tree')
 	ML_Classifier(x_test,y_test,x_train,y_train)
-	# print('10 trees')
-	# ML_Classifier(x_test,y_test,x_train,y_train,10)
-	# print('100 trees')
-	# ML_Classifier(x_test,y_test,x_train,y_train,100)
+	print('10 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,10)
+	print('100 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,100)
 
 if __name__ == '__main__':
 	main()
