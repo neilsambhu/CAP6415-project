@@ -61,10 +61,10 @@ def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for person in tqdm(os.listdir(dir_labels)):
-		if person == 'P03' or person == 'P43':
-			pass
-		else:
-			continue
+		# if person == 'P03' or person == 'P43':
+		# 	pass
+		# else:
+		# 	continue
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
@@ -92,6 +92,9 @@ def LoadData2():
 						if actionLabel == 'SIL':
 							line = fp.readline()
 							continue
+						else:
+							# extract action out of action-object pair
+							actionLabel = actionLabel.split('_')[0]
 						frameSplit = lineSplit[0].split('-')
 						frameStart = int(frameSplit[0])
 						frameEnd = int(frameSplit[1])
@@ -200,9 +203,7 @@ def strToInt(y):
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
 	print(y_test)
-	y_test = strToInt(y_test)
-	print(y_test)
-	quit()
+	# y_test = strToInt(y_test)
 	# y_train = strToInt(y_train)
 	print('1 tree')
 	ML_Classifier(x_test,y_test,x_train,y_train)
