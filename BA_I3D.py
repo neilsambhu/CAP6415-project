@@ -179,8 +179,7 @@ def LoadData2():
 	# else:
 	# 	x_train.extend(feature_x)
 	# 	y_train.extend([featureSplit[4]] * frameCount)
-	x_test,y_test,x_train,y_train = \
-		np.array(x_test),np.array(y_test),
+	x_test,y_test,x_train,y_train = np.array(x_test),np.array(y_test),
 		np.array(x_train),np.array(y_train)
 	print(x_test.shape,y_test.shape,
 		x_train.shape,y_train.shape)
