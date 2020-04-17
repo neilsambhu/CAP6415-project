@@ -181,7 +181,7 @@ def ML_Classifier(x_test,y_test,
 	# print(Counter(y).keys())
 	# print(Counter(y).values())
 	# clf.fit(x[:k,:],y[:k])
-	clf.fit(x_train,y_train)
+	clf.fit(x_train.astype(str),y_train)
 	# for item in clf.feature_importances_:
 	# 	print(item, end=" ")
 	
