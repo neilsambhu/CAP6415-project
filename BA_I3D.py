@@ -191,7 +191,9 @@ def ML_Classifier(x_test,y_test,
 	y_true = y_test
 	y_pred = clf.predict(x_test)
 	print(accuracy_score(y_true,y_pred))
-	print(confusion_matrix(y_true,y_pred))
+	confusionMatrix = confusion_matrix(y_true,y_pred)
+	print(confusionMatrix)
+	print(f'confusion matrix shape {confusionMatrix.shape}')
 def strToInt(y):
 	le = preprocessing.LabelEncoder()
 	return le.fit_transform(y)
