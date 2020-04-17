@@ -204,12 +204,20 @@ def main():
 	x_test,y_test,x_train,y_train = LoadData2()
 	# y_test = strToInt(y_test)
 	# y_train = strToInt(y_train)
+	
+	# use 1% of training data
+	itemCount = x_train.shape[0] * 0.01
+	print(itemCount)
+	itemCount = y_train.shape[0] * 0.01
+	print(itemCount)
+	quit()
+
 	print('1 tree')
 	ML_Classifier(x_test,y_test,x_train,y_train)
-	print('10 trees')
-	ML_Classifier(x_test,y_test,x_train,y_train,10)
-	print('100 trees')
-	ML_Classifier(x_test,y_test,x_train,y_train,100)
+	# print('10 trees')
+	# ML_Classifier(x_test,y_test,x_train,y_train,10)
+	# print('100 trees')
+	# ML_Classifier(x_test,y_test,x_train,y_train,100)
 
 if __name__ == '__main__':
 	main()
