@@ -178,6 +178,7 @@ def main():
 	
 	# use 10% of training data
 	n_samples = x_train.shape[0] // 10
+	print(f'n_samples: {n_samples}')
 	x_train,y_train = shuffle(x_train,y_train, 
 		n_samples=n_samples)
 
