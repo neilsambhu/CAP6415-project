@@ -82,7 +82,7 @@ def LoadData2():
 					filePath_x = os.path.join(dir_I3D,
 						f'{person}_{camName}_{person}_{objectLabel}.npy')
 					if not os.path.exists(filePath_x):
-						# print(filePath_y)
+						# print(filePath_x)
 						continue
 					arr_x = np.load(filePath_x)
 					while line:
@@ -111,7 +111,7 @@ def LoadData2():
 							line = fp.readline()
 							continue
 						# handle ./bf_kinetics_feat/P43_cam02_P43_juice.npy
-						if filePath_y == './bf_kinetics_feat/P43_cam02_P43_juice.npy':
+						if filePath_x == './bf_kinetics_feat/P43_cam02_P43_juice.npy':
 							frameEnd = 1618
 						# get npy lines
 						extend_x = arr_x[frameStart:frameEnd]
