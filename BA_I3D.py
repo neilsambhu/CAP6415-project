@@ -177,7 +177,7 @@ def main():
 	labels = np.unique(y_train)
 	
 	# use 10% of training data
-	n_samples = x_train.shape[0] // 100
+	n_samples = x_train.shape[0] // 10
 	x_train,y_train = shuffle(x_train,y_train, 
 		n_samples=n_samples)
 
