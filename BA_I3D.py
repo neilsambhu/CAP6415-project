@@ -58,8 +58,10 @@ dir_labels = '/home/DATASETS/BreakfastII_15fps_qvga_sync/'
 # 	return np.array(x_test),np.array(y_test), \
 # 		np.array(x_train),np.array(y_train)
 def LoadData2():
-	x_test, y_test = list(), list()
-	x_train, y_train = list(), list()
+	# x_test, y_test = list(), list()
+	# x_train, y_train = list(), list()
+	x_test, y_test = np.array([]), np.array([])
+	x_train, y_train = np.array([]), np.array([])
 	for person in tqdm(os.listdir(dir_labels)):
 		# if person == 'P03' or person == 'P43':
 		# 	pass
@@ -121,12 +123,16 @@ def LoadData2():
 						frameCount = frameEnd-frameStart
 						# test
 						if int(person[1:]) < 16:
-							x_test.extend(extend_x)
-							y_test.extend([actionLabel] * frameCount)
+							# x_test.extend(extend_x)
+							# y_test.extend([actionLabel] * frameCount)
+							x_test = np.append(x_test, extend_x)
+							y_test = np.append(y_test, [actionLabel] * frameCount)
 						#train
 						else:
-							x_train.extend(extend_x)
-							y_train.extend([actionLabel] * frameCount)
+							# x_train.extend(extend_x)
+							# y_train.extend([actionLabel] * frameCount)
+							x_train = np.append(x_train, extend_x)
+							y_train = np.append(y_train, [actionLabel] * frameCount)
 						# if np.array(x_train).shape[0] != np.array(y_train).shape[0]:
 						# 	print(np.array(x_train).shape[0], np.array(y_train).shape[0])
 						# 	print(fileLabels,filePath_y,frameStart,frameEnd,frameCount)
@@ -173,10 +179,11 @@ def LoadData2():
 	# else:
 	# 	x_train.extend(feature_x)
 	# 	y_train.extend([featureSplit[4]] * frameCount)
-	print(np.array(x_test).shape,np.array(y_test).shape,
-		np.array(x_train).shape,np.array(y_train).shape)
-	return np.array(x_test),np.array(y_test), \
-		np.array(x_train),np.array(y_train)
+	# print(np.array(x_test).shape,np.array(y_test).shape,
+	# 	np.array(x_train).shape,np.array(y_train).shape)
+	print(x_test.shape,y_test.shape,
+		x_train.shape,y_train.shape)
+	return x_test,y_test,x_train,y_train
 def ML_Classifier(x_test,y_test,
 	x_train,y_train,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
@@ -206,9 +213,9 @@ def main():
 	# y_train = strToInt(y_train)
 	
 	# use 1% of training data
-	itemCount = x_train.shape[0] * 0.01
+	itemCount = x_train.shape[0] // 100
 	print(itemCount)
-	itemCount = y_train.shape[0] * 0.01
+	itemCount = y_train.shape[0] // 100
 	print(itemCount)
 	quit()
 
