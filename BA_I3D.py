@@ -61,7 +61,7 @@ def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for person in tqdm(os.listdir(dir_labels)):
-		if person == 'P01' or person == 'P43':
+		if person == 'P03' or person == 'P43':
 			pass
 		else:
 			continue
