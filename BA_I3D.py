@@ -176,8 +176,8 @@ def main():
 	x_test,y_test,x_train,y_train = LoadData()
 	labels = np.unique(y_train)
 	
-	# use 10% of training data
-	n_samples = x_train.shape[0] // 10
+	# use 50% of training data
+	n_samples = x_train.shape[0] // 2
 	print(f'n_samples: {n_samples}')
 	x_train,y_train = shuffle(x_train,y_train, 
 		n_samples=n_samples)
