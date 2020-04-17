@@ -5,6 +5,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn import preprocessing
+from sklearn.utils import shuffle
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
@@ -213,8 +214,11 @@ def main():
 	# y_train = strToInt(y_train)
 	
 	# use 1% of training data
-	itemCount = x_train.shape[0] // 100
-	print(random.sample(zip(x_train,y_train), itemCount))
+	n_samples = x_train.shape[0] // 100
+	# print(random.sample(zip(x_train,y_train), itemCount))
+	x_train,y_train = shuffle(x_train,y_train, 
+		n_samples=n_samples)
+	print(x_train.shape,y_train.shape)
 	quit()
 
 	print('1 tree')
