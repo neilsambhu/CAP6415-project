@@ -197,8 +197,8 @@ def strToInt(y):
 	return le.fit_transform(y)
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
-	y_test = strToInt(y_test)
-	y_train = strToInt(y_train)
+	# y_test = strToInt(y_test)
+	# y_train = strToInt(y_train)
 	ML_Classifier(x_test,y_test,x_train,y_train)
 	# print('10 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,10)
