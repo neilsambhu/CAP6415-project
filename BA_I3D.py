@@ -214,9 +214,7 @@ def main():
 	
 	# use 1% of training data
 	itemCount = x_train.shape[0] // 100
-	print(itemCount)
-	itemCount = y_train.shape[0] // 100
-	print(itemCount)
+	print(random.sample(zip(x_train,y_train), itemCount))
 	quit()
 
 	print('1 tree')
