@@ -60,6 +60,10 @@ def LoadData2():
 	x_test, y_test = list(), list()
 	x_train, y_train = list(), list()
 	for person in tqdm(os.listdir(dir_labels)):
+		if person == 'P01' or person == 'P43':
+			pass
+		else:
+			continue
 		dir_person = os.path.join(dir_labels,person)
 		for cam in os.listdir(dir_person):
 			dir_cam = os.path.join(dir_person,cam)
@@ -105,6 +109,9 @@ def LoadData2():
 							# print(f'Warning: frameEnd value {frameEnd}')
 							line = fp.readline()
 							continue
+						# handle ./bf_kinetics_feat/P43_cam02_P43_juice.npy
+						if filePath_y == './bf_kinetics_feat/P43_cam02_P43_juice.npy':
+							frameEnd = 1618
 						# get npy lines
 						extend_y = arr_y[frameStart:frameEnd]
 						frameCount = frameEnd-frameStart
