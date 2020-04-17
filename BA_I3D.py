@@ -58,10 +58,10 @@ dir_labels = '/home/DATASETS/BreakfastII_15fps_qvga_sync/'
 # 	return np.array(x_test),np.array(y_test), \
 # 		np.array(x_train),np.array(y_train)
 def LoadData2():
-	# x_test, y_test = list(), list()
-	# x_train, y_train = list(), list()
-	x_test, y_test = np.array([]), np.array([])
-	x_train, y_train = np.array([]), np.array([])
+	x_test, y_test = list(), list()
+	x_train, y_train = list(), list()
+	# x_test, y_test = np.array([]), np.array([])
+	# x_train, y_train = np.array([]), np.array([])
 	for person in tqdm(os.listdir(dir_labels)):
 		# if person == 'P03' or person == 'P43':
 		# 	pass
