@@ -218,8 +218,6 @@ def main():
 	# print(random.sample(zip(x_train,y_train), itemCount))
 	x_train,y_train = shuffle(x_train,y_train, 
 		n_samples=n_samples)
-	print(x_train.shape,y_train.shape)
-	quit()
 
 	print('1 tree')
 	ML_Classifier(x_test,y_test,x_train,y_train)
