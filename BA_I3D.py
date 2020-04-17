@@ -79,12 +79,12 @@ def LoadData2():
 					camName = cam
 					if camName == 'stereo':
 						camName = 'stereo01'
-					filePath_y = os.path.join(dir_I3D,
+					filePath_x = os.path.join(dir_I3D,
 						f'{person}_{camName}_{person}_{objectLabel}.npy')
-					if not os.path.exists(filePath_y):
+					if not os.path.exists(filePath_x):
 						# print(filePath_y)
 						continue
-					arr_y = np.load(filePath_y)
+					arr_x = np.load(filePath_x)
 					while line:
 						lineSplit = line.split(' ')
 						actionLabel = lineSplit[1]
@@ -114,16 +114,16 @@ def LoadData2():
 						if filePath_y == './bf_kinetics_feat/P43_cam02_P43_juice.npy':
 							frameEnd = 1618
 						# get npy lines
-						extend_y = arr_y[frameStart:frameEnd]
+						extend_x = arr_x[frameStart:frameEnd]
 						frameCount = frameEnd-frameStart
 						# test
 						if int(person[1:]) < 16:
-							x_test.extend([actionLabel] * frameCount)
-							y_test.extend(extend_y)
+							x_test.extend(extend_x)
+							y_test.extend([actionLabel] * frameCount)
 						#train
 						else:
-							x_train.extend([actionLabel] * frameCount)
-							y_train.extend(extend_y)
+							x_train.extend(extend_x)
+							y_train.extend([actionLabel] * frameCount)
 						if np.array(x_train).shape[0] != np.array(y_train).shape[0]:
 							print(np.array(x_train).shape[0], np.array(y_train).shape[0])
 							print(fileLabels,filePath_y,frameStart,frameEnd,frameCount)
