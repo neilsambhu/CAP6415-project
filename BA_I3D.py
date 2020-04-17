@@ -199,7 +199,10 @@ def strToInt(y):
 	return le.fit_transform(y)
 def main():
 	x_test,y_test,x_train,y_train = LoadData2()
-	# y_test = strToInt(y_test)
+	print(y_test)
+	y_test = strToInt(y_test)
+	print(y_test)
+	quit()
 	# y_train = strToInt(y_train)
 	print('1 tree')
 	ML_Classifier(x_test,y_test,x_train,y_train)
