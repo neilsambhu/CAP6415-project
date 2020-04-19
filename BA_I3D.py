@@ -184,10 +184,10 @@ def main():
 
 	# print('1 tree')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels)
-	print('10 trees')
-	ML_Classifier(x_test,y_test,x_train,y_train,labels,10)
-	# print('100 trees')
-	# ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
+	# print('10 trees')
+	# ML_Classifier(x_test,y_test,x_train,y_train,labels,10)
+	print('100 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
 
 if __name__ == '__main__':
 	main()
