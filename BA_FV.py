@@ -31,6 +31,28 @@ def LoadData():
 	# 	np.array(x_train).shape,np.array(y_train).shape)
 	return np.array(x_test), np.array(y_test), \
 		np.array(x_train), np.array(y_train)
+def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=None):
+    """pretty print for confusion matrixes"""
+    columnwidth = max([len(x) for x in labels] + [5])  # 5 is value length
+    empty_cell = " " * columnwidth
+    # Print header
+    print("    " + empty_cell, end=" ")
+    for label in labels:
+        print("%{0}s".format(columnwidth) % label, end=" ")
+    print()
+    # Print rows
+    for i, label1 in enumerate(labels):
+        print("    %{0}s".format(columnwidth) % label1, end=" ")
+        for j in range(len(labels)):
+            cell = "%{0}.1f".format(columnwidth) % cm[i, j]
+            if hide_zeroes:
+                cell = cell if float(cm[i, j]) != 0 else empty_cell
+            if hide_diagonal:
+                cell = cell if i != j else empty_cell
+            if hide_threshold:
+                cell = cell if cm[i, j] > hide_threshold else empty_cell
+            print(cell, end=" ")
+        print()
 def ML_Classifier(x_test,y_test,
 	x_train,y_train,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
@@ -39,8 +61,10 @@ def ML_Classifier(x_test,y_test,
 
 	y_true = y_test
 	y_pred = clf.predict(x_test)
-	print(accuracy_score(y_true,y_pred))
-	print(confusion_matrix(y_true,y_pred))
+	print(f'acc: {accuracy_score(y_true,y_pred)}')
+	confusionMatrix = confusion_matrix(y_true,y_pred)
+	print_cm(confusionMatrix,labels)
+	print(f'confusion matrix shape {confusionMatrix.shape}')
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData()
