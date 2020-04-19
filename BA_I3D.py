@@ -7,6 +7,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn import preprocessing
 from sklearn.utils import shuffle
 from joblib import dump, load
+np.set_printoptions(suppress=True)
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
@@ -125,7 +126,7 @@ def ML_Classifier(x_test,y_test,
 	x_train,y_train,labels,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
 	clf.fit(x_train,y_train)
-	dump(clf, 'output/I3D-01-RF-100.joblib')
+	dump(clf, f'output/I3D-01-RF-{n_estimators}.joblib')
 
 	y_true = y_test
 	y_pred = clf.predict(x_test)

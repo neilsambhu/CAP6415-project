@@ -4,6 +4,7 @@ from tqdm import tqdm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
+from joblib import dump, load
 np.set_printoptions(suppress=True)
 
 dir_FV = "./breakfast_data/s1/"
@@ -33,17 +34,9 @@ def LoadData():
 def ML_Classifier(x_test,y_test,
 	x_train,y_train,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
-	k = 1000
-	# from collections import Counter
-	# print(Counter(y).keys())
-	# print(Counter(y).values())
-	# clf.fit(x[:k,:],y[:k])
 	clf.fit(x_train,y_train)
-	# for item in clf.feature_importances_:
-	# 	print(item, end=" ")
-	
-	# y_true = y[:k]
-	# y_pred = clf.predict(x[:k,:])
+	dump(clf, f'output/FV-01-RF-{n_estimators}.joblib')
+
 	y_true = y_test
 	y_pred = clf.predict(x_test)
 	print(accuracy_score(y_true,y_pred))
@@ -51,8 +44,8 @@ def ML_Classifier(x_test,y_test,
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData()
-	print('10 trees')
-	ML_Classifier(x_test,y_test,x_train,y_train,10)
+	# print('10 trees')
+	# ML_Classifier(x_test,y_test,x_train,y_train,10)
 	print('100 trees')
 	ML_Classifier(x_test,y_test,x_train,y_train,100)
 
