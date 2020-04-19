@@ -171,23 +171,24 @@ def ML_Classifier(x_test,y_test,
 	confusionMatrix = confusion_matrix(y_true,y_pred,labels=labels)
 	print_cm(confusionMatrix,labels)
 	print(f'confusion matrix shape {confusionMatrix.shape}')
+	print(clf.predict_proba(x_test))
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData()
 	labels = np.unique(y_train)
 	
 	# use 100% of training data
-	n_samples = x_train.shape[0] // 1
+	n_samples = x_train.shape[0] // 1000
 	print(f'n_samples: {n_samples}')
 	x_train,y_train = shuffle(x_train,y_train, 
 		n_samples=n_samples)
 
-	# print('1 tree')
-	# ML_Classifier(x_test,y_test,x_train,y_train,labels)
+	print('1 tree')
+	ML_Classifier(x_test,y_test,x_train,y_train,labels)
 	# print('10 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels,10)
-	print('100 trees')
-	ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
+	# print('100 trees')
+	# ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
 
 if __name__ == '__main__':
 	main()
