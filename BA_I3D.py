@@ -6,6 +6,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn import preprocessing
 from sklearn.utils import shuffle
+from joblib import dump, load
 
 dir_I3D = "./bf_kinetics_feat/"
 dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/"
@@ -92,47 +93,7 @@ def LoadData():
 						# 	print(fileLabels,filePath_y,frameStart,frameEnd,frameCount)
 						# 	quit()
 						line = fp.readline()
-	# quit()
-	# featureSplit = feature.split('_')
-	# if len(featureSplit) <= 1:
-	# 	continue
-	# # replace 'salad' with 'salat'
-	# if featureSplit[2] == 'salad':
-	# 	featureSplit[2] = 'salat'
-	# filePath_x = os.path.join(dir_I3D,
-	# 	featureSplit[1] + '_' + 
-	# 	featureSplit[3] + '_' +
-	# 	featureSplit[1] + '_' + 
-	# 	featureSplit[2] + '.npy')
-	# if not os.path.exists(filePath_x):
-	# 	print(f'File not found: {filePath_x}')
-	# 	continue
-	# featureVideo = np.load(filePath_x)
-	# # print(featureVideo.shape)
-	# frameOffset = 5
-	# frameStart = int(featureSplit[-2])-frameOffset #need to do the check here
-	# if frameStart < 0:
-	# 	frameStart = 0
-	# frameEnd = int(featureSplit[-1])-frameOffset+1
-	# frameCount = frameEnd-frameStart
-	# if frameEnd > featureVideo.shape[0]:
-	# 	print(f'Error: frameEnd value {frameEnd}', 
-	# 		f'featureVideo.shape[0] {featureVideo.shape[0]}')
-	# 	print(featureSplit)
-	# 	quit()
-	# 	continue
-	# # print(frameEnd,frameStart,featureSplit[7],featureSplit[6],
-	# # 	frameEnd-frameStart,int(featureSplit[7])-int(featureSplit[6]))
-	# feature_x = featureVideo[frameStart:frameEnd,:]
-	# # print(feature_x.shape)
-	# # test
-	# if int(featureSplit[1][1:]) < 16:
-	# 	x_test.extend(feature_x)
-	# 	y_test.extend([featureSplit[4]] * frameCount)
-	# # train
-	# else:
-	# 	x_train.extend(feature_x)
-	# 	y_train.extend([featureSplit[4]] * frameCount)
+	
 	x_test,y_test,x_train,y_train = np.array(x_test),\
 		np.array(y_test),np.array(x_train),np.array(y_train)
 	print(x_test.shape,y_test.shape,
@@ -164,6 +125,7 @@ def ML_Classifier(x_test,y_test,
 	x_train,y_train,labels,n_estimators=1):
 	clf = RandomForestClassifier(n_estimators=n_estimators)
 	clf.fit(x_train,y_train)
+	dump(clf, 'output/I3D-01-RF-100.joblib')
 
 	y_true = y_test
 	y_pred = clf.predict(x_test)
@@ -171,24 +133,25 @@ def ML_Classifier(x_test,y_test,
 	confusionMatrix = confusion_matrix(y_true,y_pred,labels=labels)
 	print_cm(confusionMatrix,labels)
 	print(f'confusion matrix shape {confusionMatrix.shape}')
-	print(clf.predict_proba(x_test))
+	# print(clf.predict_proba(x_test))
+
 
 def main():
 	x_test,y_test,x_train,y_train = LoadData()
 	labels = np.unique(y_train)
 	
 	# use 100% of training data
-	n_samples = x_train.shape[0] // 1000
+	n_samples = x_train.shape[0] // 1
 	print(f'n_samples: {n_samples}')
 	x_train,y_train = shuffle(x_train,y_train, 
 		n_samples=n_samples)
 
-	print('1 tree')
-	ML_Classifier(x_test,y_test,x_train,y_train,labels)
+	# print('1 tree')
+	# ML_Classifier(x_test,y_test,x_train,y_train,labels)
 	# print('10 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels,10)
-	# print('100 trees')
-	# ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
+	print('100 trees')
+	ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
 
 if __name__ == '__main__':
 	main()
