@@ -14,7 +14,7 @@ dir_labels = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PrePr
 dir_labels = '/home/DATASETS/BreakfastII_15fps_qvga_sync/'
 
 def LoadData():
-	x_test, y_test = list(), list()
+	x_test, y_test, listFileName_test = list(), list(), list()
 	x_train, y_train = list(), list()
 	# x_test, y_test = np.array([]), np.array([])
 	# x_train, y_train = np.array([]), np.array([])
@@ -81,6 +81,9 @@ def LoadData():
 						if int(person[1:]) < 16:
 							x_test.extend(extend_x)
 							y_test.extend([actionLabel] * frameCount)
+							fileName_test = f'{person}_{objectLabel}_{camName}\
+								_{actionLabel}_{objectLabel}_{frameStart}_{frameEnd}'
+							listFileName_test.append()
 							# x_test = np.append(x_test, extend_x)
 							# y_test = np.append(y_test, [actionLabel] * frameCount)
 						#train
@@ -95,11 +98,13 @@ def LoadData():
 						# 	quit()
 						line = fp.readline()
 	
-	x_test,y_test,x_train,y_train = np.array(x_test),\
-		np.array(y_test),np.array(x_train),np.array(y_train)
-	print(x_test.shape,y_test.shape,
+	x_test,y_test,listFileName_test,
+	x_train,y_train = np.array(x_test),\
+		np.array(y_test),np.array(listFileName_test)
+		np.array(x_train),np.array(y_train)
+	print(x_test.shape,y_test.shape,listFileName_test.shape,
 		x_train.shape,y_train.shape)
-	return x_test,y_test,x_train,y_train
+	return x_test,y_test,listFileName_test,x_train,y_train
 def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=None):
     """pretty print for confusion matrixes"""
     columnwidth = max([len(x) for x in labels] + [5])  # 5 is value length
@@ -138,7 +143,9 @@ def ML_Classifier(x_test,y_test,
 
 
 def main():
-	x_test,y_test,x_train,y_train = LoadData()
+	x_test,y_test,listFileName_test,x_train,y_train = LoadData()
+	print(listFileName_test)
+	quit()
 	labels = np.unique(y_train)
 	
 	# use 100% of training data
