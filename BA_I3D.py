@@ -98,9 +98,9 @@ def LoadData():
 						# 	quit()
 						line = fp.readline()
 	
-	x_test,y_test,listFileName_test,
-	x_train,y_train = np.array(x_test), 
-		np.array(y_test),np.array(listFileName_test), 
+	x_test,y_test,listFileName_test, \
+	x_train,y_train = np.array(x_test), \
+		np.array(y_test),np.array(listFileName_test), \
 		np.array(x_train),np.array(y_train)
 	print(x_test.shape,y_test.shape,listFileName_test.shape, 
 		x_train.shape,y_train.shape)
