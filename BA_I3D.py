@@ -217,11 +217,11 @@ def create_file_structure(fileName_Features):
 	for filePath, arrFeatures in fileName_Features.items():
 		# inside dictionary
 		# single file path
-		print(arrFeatures.shape)
-		predict_proba = np.apply_along_axis(
-			clf.predict_proba, axis=1, arr=arrFeatures)
+		predict_proba = clf.predict_proba(arrFeatures)
+		print(predict_proba.shape)
+		print(np.array(predict_proba).shape)
 
-		print(predict_proba[0])
+		# print(predict_proba[0])
 		quit()
 
 		f = os.path.join(output_path,"HOF_"+f)
