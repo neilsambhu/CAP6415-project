@@ -205,17 +205,24 @@ def ML_Classifier(x_test,y_test,
 	print_cm(confusionMatrix,labels)
 	print(f'confusion matrix shape {confusionMatrix.shape}')
 	# print(clf.predict_proba(x_test))
-def create_file_structure(file_names, x_test):
+def create_file_structure(fileName_Features):
 	# RF information
 	clf = load(f'output/I3D-01-RF-100.joblib')
-	predict_proba = clf.predict_proba(x_test)
-
+	
 	output_path='S1_PreProcessFiles/labels'
 
 	if not os.path.exists(output_path):
 	    os.makedirs(output_path)
 
-	for i, f in enumerate(file_names):
+	for filePath, arrFeatures in fileName_Features.items():
+		# inside dictionary
+		# single file path
+		predict_proba = np.apply_along_axis(
+			clf.predict_proba, axis=1, arr=arrFeatures)
+
+		print(predict_proba[0])
+		quit()
+
 		f = os.path.join(output_path,"HOF_"+f)
 		file = open(f, "w") 
 		file.write(predict_proba[i]) 
@@ -239,8 +246,7 @@ def main():
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
 
 	fileName_Features = LoadFilePaths()
-	print(fileName_Features)
-	# create_file_structure(listFileName_test,x_test)
+	create_file_structure(fileName_Features)
 
 if __name__ == '__main__':
 	main()
