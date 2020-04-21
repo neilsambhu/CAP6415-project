@@ -128,9 +128,10 @@ def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=
         print()
 def ML_Classifier(x_test,y_test,
 	x_train,y_train,labels,n_estimators=1):
-	clf = RandomForestClassifier(n_estimators=n_estimators)
-	clf.fit(x_train,y_train)
-	dump(clf, f'output/I3D-01-RF-{n_estimators}.joblib')
+	# clf = RandomForestClassifier(n_estimators=n_estimators)
+	# clf.fit(x_train,y_train)
+	# dump(clf, f'output/I3D-01-RF-{n_estimators}.joblib')
+	clf = load(f'output/I3D-01-RF-{n_estimators}.joblib')
 
 	y_true = y_test
 	y_pred = clf.predict(x_test)
@@ -139,26 +140,40 @@ def ML_Classifier(x_test,y_test,
 	print_cm(confusionMatrix,labels)
 	print(f'confusion matrix shape {confusionMatrix.shape}')
 	# print(clf.predict_proba(x_test))
+def create_file_structure(file_names, x_test):
+	# RF information
+	clf = load(f'output/I3D-01-RF-100.joblib')
+	predict_proba = clf.predict_proba(x_test)
 
+	output_path='S1_PreProcessFiles/labels'
+
+	if not os.path.exists(output_path):
+	    os.makedirs(output_path)
+
+	for i, f in enumerate(file_names):
+		f = os.path.join(output_path,"HOF_"+f)
+		file = open(f, "w") 
+		file.write(predict_proba[i]) 
+		file.close()
 
 def main():
 	x_test,y_test,listFileName_test,x_train,y_train = LoadData()
-	print(listFileName_test)
-	quit()
-	labels = np.unique(y_train)
+	# labels = np.unique(y_train)
 	
 	# use 100% of training data
-	n_samples = x_train.shape[0] // 1
-	print(f'n_samples: {n_samples}')
-	x_train,y_train = shuffle(x_train,y_train, 
-		n_samples=n_samples)
+	# n_samples = x_train.shape[0] // 1
+	# print(f'n_samples: {n_samples}')
+	# x_train,y_train = shuffle(x_train,y_train, 
+	# 	n_samples=n_samples)
 
 	# print('1 tree')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels)
 	# print('10 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels,10)
-	print('100 trees')
-	ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
+	# print('100 trees')
+	# ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
+
+	create_file_structure(listFileName_test,x_test)
 
 if __name__ == '__main__':
 	main()
