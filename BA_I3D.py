@@ -104,6 +104,71 @@ def LoadData():
 	print(x_test.shape,y_test.shape,listFileName_test.shape, 
 		x_train.shape,y_train.shape)
 	return x_test,y_test,listFileName_test,x_train,y_train
+def LoadFilePaths():
+	# x_test, y_test, listFileName_test = list(), list(), list()
+	fileName_Features = {}
+	for person in tqdm(os.listdir(dir_labels)):
+		if int(person[1:]) >= 16:
+			continue
+		dir_person = os.path.join(dir_labels,person)
+		for cam in os.listdir(dir_person):
+			dir_cam = os.path.join(dir_person,cam)
+			filesLabelsRegex = os.path.join(
+				dir_cam,'*.labels')
+			# print(filesLabelsRegex)
+			for fileLabels in glob.glob(filesLabelsRegex):
+				objectLabel = fileLabels.split('/')[-1].split('.')[0].split('_')[1]
+				with open(fileLabels) as fp:
+					line = fp.readline()
+					# build file path to npy
+					camName = cam
+					if camName == 'stereo':
+						camName = 'stereo01'
+					filePath_x = os.path.join(dir_I3D,
+						f'{person}_{camName}_{person}_{objectLabel}.npy')
+					if not os.path.exists(filePath_x):
+						# print(filePath_x)
+						continue
+					arr_x = np.load(filePath_x)
+					while line:
+						lineSplit = line.split(' ')
+						actionLabel = lineSplit[1]
+						# skip SIL
+						if actionLabel == 'SIL':
+							line = fp.readline()
+							continue
+						else:
+							# extract action out of action-object pair
+							actionLabel = actionLabel.split('_')[0]
+						frameSplit = lineSplit[0].split('-')
+						frameStart = int(frameSplit[0])
+						frameEnd = int(frameSplit[1])
+						# check if frames are the same
+						# and action doesn't matter
+						if frameStart == frameEnd:
+							# print(frameSplit[0],actionLabel)
+							line = fp.readline()
+							continue
+						frameOffset = 5
+						frameStart -= frameOffset
+						frameEnd -= frameOffset + 1
+						if frameStart < 0:
+							frameStart = 0
+						if frameEnd < 1:
+							# print(f'Warning: frameEnd value {frameEnd}')
+							line = fp.readline()
+							continue
+
+						# get npy lines
+						extend_x = arr_x[frameStart:frameEnd]
+						frameCount = frameEnd-frameStart
+						# x_test.extend(extend_x)
+						# y_test.extend([actionLabel] * frameCount)
+						fileName_test = f'{person}_{objectLabel}_{camName}_{actionLabel}_{objectLabel}_{frameStart}_{frameEnd}'
+						# listFileName_test.append(fileName_test)
+						fileName_Features[fileName_test] = extend_x
+						line = fp.readline()
+	return fileName_Features
 def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=None):
     """pretty print for confusion matrixes"""
     columnwidth = max([len(x) for x in labels] + [5])  # 5 is value length
@@ -157,7 +222,7 @@ def create_file_structure(file_names, x_test):
 		file.close()
 
 def main():
-	x_test,y_test,listFileName_test,x_train,y_train = LoadData()
+	# x_test,y_test,listFileName_test,x_train,y_train = LoadData()
 	# labels = np.unique(y_train)
 	
 	# use 100% of training data
@@ -173,7 +238,9 @@ def main():
 	# print('100 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
 
-	create_file_structure(listFileName_test,x_test)
+	fileName_Features = LoadFilePaths()
+	print(fileName_Features)
+	# create_file_structure(listFileName_test,x_test)
 
 if __name__ == '__main__':
 	main()
