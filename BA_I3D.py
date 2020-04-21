@@ -217,6 +217,7 @@ def create_file_structure(fileName_Features):
 	for filePath, arrFeatures in fileName_Features.items():
 		# inside dictionary
 		# single file path
+		print(arrFeatures.shape)
 		predict_proba = np.apply_along_axis(
 			clf.predict_proba, axis=1, arr=arrFeatures)
 
