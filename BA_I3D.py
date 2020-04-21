@@ -81,8 +81,7 @@ def LoadData():
 						if int(person[1:]) < 16:
 							x_test.extend(extend_x)
 							y_test.extend([actionLabel] * frameCount)
-							fileName_test = f'{person}_{objectLabel}_{camName}\
-								_{actionLabel}_{objectLabel}_{frameStart}_{frameEnd}'
+							fileName_test = f'{person}_{objectLabel}_{camName}_{actionLabel}_{objectLabel}_{frameStart}_{frameEnd}'
 							listFileName_test.append(fileName_test)
 							# x_test = np.append(x_test, extend_x)
 							# y_test = np.append(y_test, [actionLabel] * frameCount)
