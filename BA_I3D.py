@@ -164,7 +164,7 @@ def LoadFilePaths():
 						frameCount = frameEnd-frameStart
 						# x_test.extend(extend_x)
 						# y_test.extend([actionLabel] * frameCount)
-						fileName_test = f'{person}_{objectLabel}_{camName}_{actionLabel}_{objectLabel}_{frameStart}_{frameEnd}'
+						fileName_test = f'{person}_{objectLabel}_{camName}_{actionLabel}_{objectLabel}_{int(frameSplit[0])}_{int(frameSplit[1])}'
 						# listFileName_test.append(fileName_test)
 						fileName_Features[fileName_test] = extend_x
 						line = fp.readline()
