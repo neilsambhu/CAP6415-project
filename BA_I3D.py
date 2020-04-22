@@ -226,7 +226,7 @@ def create_file_structure(fileName_Features):
 		file = open(f, "w") 
 		# write predictions for each action
 		for action,prob in zip(labelsActions,sum_predict_proba):
-			file.write(f'{action} {prob}') 
+			file.write(f'{action} {prob}\n') 
 		file.close()
 		quit()
 
