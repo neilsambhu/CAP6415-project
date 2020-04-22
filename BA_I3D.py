@@ -213,12 +213,12 @@ def create_file_structure(fileName_Features):
 
 	if not os.path.exists(output_path):
 	    os.makedirs(output_path)
-
+# add  butter   crack     cut     fry    peel    pour     put   smear   spoon squeeze    stir stirfry    take    walk
 	for filePath, arrFeatures in fileName_Features.items():
 		# inside dictionary
 		# single file path
 		predict_proba = clf.predict_proba(arrFeatures)
-		print(predict_proba.shape)
+		print(filePath, predict_proba.shape)
 		print(predict_proba[0])
 
 		# print(predict_proba[0])
