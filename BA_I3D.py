@@ -210,25 +210,25 @@ def create_file_structure(fileName_Features):
 	clf = load(f'output/I3D-01-RF-100.joblib')
 	
 	output_path='S1_PreProcessFiles/labels'
+	labelsActions = ['add', 'butter', 'crack', 'cut', 'fry',
+		'peel', 'pour', 'put', 'smear', 'spoon', 'squeeze', 
+		'stir', 'stirfry', 'take', 'walk']
 
 	if not os.path.exists(output_path):
 	    os.makedirs(output_path)
-# add  butter   crack     cut     fry    peel    pour     put   smear   spoon squeeze    stir stirfry    take    walk
 	for filePath, arrFeatures in fileName_Features.items():
 		# inside dictionary
 		# single file path
 		predict_proba = clf.predict_proba(arrFeatures)
 		sum_predict_proba = np.sum(predict_proba, axis=0)
-		print(filePath, sum_predict_proba.shape)
-		print(sum_predict_proba)
-
-		# print(predict_proba[0])
-		quit()
-
+		
 		f = os.path.join(output_path,"HOF_"+f)
 		file = open(f, "w") 
-		file.write(predict_proba[i]) 
+		# write predictions for each action
+		for action,prob in zip(labelsActions,sum_predict_proba):
+			file.write(f'{action} {prob}') 
 		file.close()
+		quit()
 
 def main():
 	# x_test,y_test,listFileName_test,x_train,y_train = LoadData()
