@@ -228,7 +228,7 @@ def create_file_structure(fileName_Features):
 		for action,prob in zip(labelsActions,sum_predict_proba):
 			file.write(f'{action} {prob}\n') 
 		file.close()
-		quit()
+		# quit()
 
 def main():
 	# x_test,y_test,listFileName_test,x_train,y_train = LoadData()
