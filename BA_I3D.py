@@ -222,7 +222,7 @@ def create_file_structure(fileName_Features):
 		predict_proba = clf.predict_proba(arrFeatures)
 		sum_predict_proba = np.sum(predict_proba, axis=0)
 		
-		f = os.path.join(output_path,"HOF_"+f)
+		f = os.path.join(output_path,"HOF_"+filePath)
 		file = open(f, "w") 
 		# write predictions for each action
 		for action,prob in zip(labelsActions,sum_predict_proba):
