@@ -219,7 +219,7 @@ def create_file_structure(fileName_Features):
 		# single file path
 		predict_proba = clf.predict_proba(arrFeatures)
 		print(filePath, predict_proba.shape)
-		print(predict_proba[0])
+		print(predict_proba[0:2])
 
 		# print(predict_proba[0])
 		quit()
