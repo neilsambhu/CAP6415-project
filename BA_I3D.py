@@ -218,8 +218,9 @@ def create_file_structure(fileName_Features):
 		# inside dictionary
 		# single file path
 		predict_proba = clf.predict_proba(arrFeatures)
-		print(filePath, predict_proba.shape)
-		print(predict_proba[0:2])
+		sum_predict_proba = np.sum(predict_proba, axis=0)
+		print(filePath, sum_predict_proba.shape)
+		print(sum_predict_proba)
 
 		# print(predict_proba[0])
 		quit()
