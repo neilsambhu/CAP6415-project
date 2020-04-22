@@ -196,7 +196,7 @@ def ML_Classifier(x_test,y_test,
 	# clf = RandomForestClassifier(n_estimators=n_estimators)
 	# clf.fit(x_train,y_train)
 	# dump(clf, f'output/I3D-01-RF-{n_estimators}.joblib')
-	clf = load(f'output/I3D-01-RF-{n_estimators}.joblib')
+	clf = load(f'output/I3D-02-RF-{n_estimators}.joblib')
 
 	y_true = y_test
 	y_pred = clf.predict(x_test)
@@ -205,9 +205,10 @@ def ML_Classifier(x_test,y_test,
 	print_cm(confusionMatrix,labels)
 	print(f'confusion matrix shape {confusionMatrix.shape}')
 	# print(clf.predict_proba(x_test))
-def create_file_structure(fileName_Features):
+	return clf
+def create_file_structure(fileName_Features, clf):
 	# RF information
-	clf = load(f'output/I3D-01-RF-100.joblib')
+	# clf = load(f'output/I3D-02-RF-10.joblib')
 	
 	output_path='S1_PreProcessFiles/labels'
 	labelsActions = ['add', 'butter', 'crack', 'cut', 'fry',
@@ -231,8 +232,8 @@ def create_file_structure(fileName_Features):
 		# quit()
 
 def main():
-	# x_test,y_test,listFileName_test,x_train,y_train = LoadData()
-	# labels = np.unique(y_train)
+	x_test,y_test,listFileName_test,x_train,y_train = LoadData()
+	labels = np.unique(y_train)
 	
 	# use 100% of training data
 	# n_samples = x_train.shape[0] // 1
@@ -242,13 +243,13 @@ def main():
 
 	# print('1 tree')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels)
-	# print('10 trees')
-	# ML_Classifier(x_test,y_test,x_train,y_train,labels,10)
+	print('10 trees')
+	clf = ML_Classifier(x_test,y_test,x_train,y_train,labels,10)
 	# print('100 trees')
 	# ML_Classifier(x_test,y_test,x_train,y_train,labels,100)
 
 	fileName_Features = LoadFilePaths()
-	create_file_structure(fileName_Features)
+	create_file_structure(fileName_Features, clf)
 
 if __name__ == '__main__':
 	main()
