@@ -193,10 +193,10 @@ def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=
         print()
 def ML_Classifier(x_test,y_test,
 	x_train,y_train,labels,n_estimators=1):
-	# clf = RandomForestClassifier(n_estimators=n_estimators)
-	# clf.fit(x_train,y_train)
-	# dump(clf, f'output/I3D-01-RF-{n_estimators}.joblib')
-	clf = load(f'output/I3D-02-RF-{n_estimators}.joblib')
+	clf = RandomForestClassifier(n_estimators=n_estimators)
+	clf.fit(x_train,y_train)
+	dump(clf, f'output/I3D-02-RF-{n_estimators}.joblib')
+	# clf = load(f'output/I3D-02-RF-{n_estimators}.joblib')
 
 	y_true = y_test
 	y_pred = clf.predict(x_test)
