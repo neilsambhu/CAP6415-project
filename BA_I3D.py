@@ -216,7 +216,7 @@ def create_file_structure(fileName_Features):
 
 	if not os.path.exists(output_path):
 	    os.makedirs(output_path)
-	for filePath, arrFeatures in fileName_Features.items():
+	for filePath, arrFeatures in tqdm(fileName_Features.items()):
 		# inside dictionary
 		# single file path
 		predict_proba = clf.predict_proba(arrFeatures)
