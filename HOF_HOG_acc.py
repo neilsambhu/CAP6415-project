@@ -18,7 +18,7 @@ def labelAccuracy(filepathRegex):
 		# 	arr = np.fromfile(f)
 		# 	print(arr.shape)
 		# 	print(arr)
-		arr = np.fromfile(filepath)
+		arr = np.fromfile(filepath, dtype="string", sep=" ")
 		print(arr.shape)
 		print(arr)
 		quit()
