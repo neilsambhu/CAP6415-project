@@ -12,31 +12,25 @@ np.set_printoptions(suppress=True)
 dir_HOF_HOG = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreProcessFiles/labels/"
 
 def labelAccuracy(filepathRegex):
+	countFiles = 0
+	countCorrect = 0
 	for filepath in glob.glob(filepathRegex):
 		trueActionLabel = filepath.split('/')[-1].split('_')[4]
-		print(trueActionLabel)
+		# print(trueActionLabel)
 		with open(filepath, "r") as f:
-			# print(filepath)
 			fileContents = f.read().split('\n')
 			# remove last line character
 			if fileContents[-1]=='':
 				fileContents = fileContents[:-1]
-			# print('fileContents',fileContents)
 			arrActionLabels = [line.split(' ')[0] for line in fileContents]
 			arrPred = [float(line.split(' ')[1]) for line in fileContents]
-			print(arrActionLabels)
-			print(arrPred)
 			idxMax = np.argmax(arrPred)
-			print(idxMax)
-			print(arrActionLabels[idxMax])
-			quit()
-			arr = np.fromfile(f)
-			print(arr.shape)
-			print(arr)
-		# arr = np.fromfile(filepath, dtype=dtype.str, sep=" ")
-		# print(arr.shape)
-		# print(arr)
-		quit()
+			predActionLabel = arrActionLabels[idxMax]
+			# print(predActionLabel)
+			if trueActionLabel == predActionLabel:
+				print(trueActionLabel)
+				quit()
+		# quit()
 
 def main():
 	labelAccuracy(dir_HOF_HOG + 'HOF*')
