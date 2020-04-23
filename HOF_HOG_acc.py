@@ -18,11 +18,13 @@ def labelAccuracy(filepathRegex):
 			# remove last line character
 			if fileContents[-1]=='':
 				fileContents = fileContents[:-1]
-			print('fileContents',fileContents)
+			# print('fileContents',fileContents)
 			arrActionLabels = [line.split(' ')[0] for line in fileContents]
 			arrPred = [line.split(' ')[1] for line in fileContents]
-			print(arrActionLabels, arrPred)
-			print(np.argmax(arrActionLabels))
+			print(arrActionLabels)
+			print(arrPred)
+			idxMax = np.argmax(arrPred)
+			print(arrActionLabels[idxMax])
 			quit()
 			arr = np.fromfile(f)
 			print(arr.shape)
