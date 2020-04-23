@@ -15,7 +15,7 @@ def labelAccuracy(filepathRegex):
 	for filepath in glob.glob(filepathRegex):
 		with open(filepath, "r") as f:
 			fileContents = f.read().split('\n')
-			print(fileContents)
+			print(fileContents.split(' '))
 			quit()
 			arr = np.fromfile(f)
 			print(arr.shape)
