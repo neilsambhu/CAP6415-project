@@ -20,7 +20,7 @@ def labelAccuracy(filepathRegex):
 				fileContents = fileContents[:-1]
 			# print('fileContents',fileContents)
 			arrActionLabels = [line.split(' ')[0] for line in fileContents]
-			arrPred = [int(line.split(' ')[1]) for line in fileContents]
+			arrPred = [float(line.split(' ')[1]) for line in fileContents]
 			print(arrActionLabels)
 			print(arrPred)
 			idxMax = np.argmax(arrPred)
