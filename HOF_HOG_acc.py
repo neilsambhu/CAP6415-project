@@ -16,7 +16,7 @@ def labelAccuracy(filepathRegex):
 		print(filepath)
 
 def main():
-	labelAccuracy(dir_HOF_HOG + 'HOF*')
+	labelAccuracy(dir_HOF_HOG + 'HOG*')
 
 if __name__ == '__main__':
 	main()
