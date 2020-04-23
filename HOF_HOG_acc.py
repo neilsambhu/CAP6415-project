@@ -13,10 +13,12 @@ dir_HOF_HOG = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreP
 
 def labelAccuracy(filepathRegex):
 	for filepath in glob.glob(filepathRegex):
-		print(filepath)
+		with open(filepath, "r") as f:
+			fileContents = f.read()
+			print(fileContents)
 
 def main():
-	labelAccuracy(dir_HOF_HOG + 'HOG*')
+	labelAccuracy(dir_HOF_HOG + 'HOF*')
 
 if __name__ == '__main__':
 	main()
