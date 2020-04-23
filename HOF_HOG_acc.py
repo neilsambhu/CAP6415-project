@@ -24,6 +24,7 @@ def labelAccuracy(filepathRegex):
 			print(arrActionLabels)
 			print(arrPred)
 			idxMax = np.argmax(arrPred)
+			print(idxMax)
 			print(arrActionLabels[idxMax])
 			quit()
 			arr = np.fromfile(f)
