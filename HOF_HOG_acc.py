@@ -15,7 +15,7 @@ def labelAccuracy(filepathRegex):
 	for filepath in glob.glob(filepathRegex):
 		with open(filepath, "r") as f:
 			fileContents = f.read().split('\n')
-			arrLabelsPred = [line.split(' ') for line in fileContents]
+			arrLabelsPred = np.array([line.split(' ') for line in fileContents])
 			print(arrLabelsPred[:1,:])
 			print(np.argmax(arrLabelsPred[:1,:]))
 			quit()
