@@ -14,6 +14,7 @@ dir_HOF_HOG = "./PatternTheory_WACV_Original/PatternTheory_WACV_Original/S1_PreP
 def labelAccuracy(filepathRegex):
 	for filepath in glob.glob(filepathRegex):
 		with open(filepath, "r") as f:
+			print(filepath)
 			fileContents = f.read().split('\n')
 			# remove last line character
 			if fileContents[-1]=='':
