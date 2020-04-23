@@ -16,6 +16,7 @@ def labelAccuracy(filepathRegex):
 		with open(filepath, "r") as f:
 			fileContents = f.read()
 			print(fileContents)
+		quit()
 
 def main():
 	labelAccuracy(dir_HOF_HOG + 'HOF*')
