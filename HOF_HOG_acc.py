@@ -15,6 +15,7 @@ def labelAccuracy(filepathRegex):
 	for filepath in glob.glob(filepathRegex):
 		with open(filepath, "r") as f:
 			fileContents = f.read().split('\n')
+			print('fileContents',fileContents)
 			arrActionLabels = [line.split(' ')[0] for line in fileContents]
 			arrPred = [line.split(' ')[1] for line in fileContents]
 			print(arrActionLabels, arrPred)
