@@ -1,6 +1,9 @@
 # CAP6415-project
 2020 CAP6415 Semester Project
 
+The python files in the root directory are the files coded for this semester project. The *_.csv files in the ./PatternTheory_WACV_Original/PatternTheory_WACV_Original/ folders were modified to replace the JSON queries with the CSV requests.
+
+The text below describes the code for ./PatternTheory_WACV/ and ./PatternTheory_WACV_Original/PatternTheory_WACV_Original/, borrowed from Sathya Aakur.
 
 As per our conversation over WhatsApp, attached is the PT code that I used for the QAM/WACV papers. Note that it is based on Python2.7. I have not gotten around to updating it to Python3. I have included the input files (top-k labels) as used for the Breakfast Actions dataset and its subsequent evaluation code (as obtained from Fillipe).
 
