@@ -1,7 +1,7 @@
 # CAP6415-project
 2020 CAP6415 Semester Project
 
-The python files in the root directory are the files coded for this semester project. The *_.csv files in the ./PatternTheory_WACV_Original/PatternTheory_WACV_Original/ folders were modified to replace the JSON queries with the CSV requests.
+The python files in the root directory are the files coded for this semester project. BA_*.py files are the files used to classify objects and actions. The HOF_HOG_acc.py was the starting point for computing the accuracy of the HOF and HOG feature detectors used in Sathya's QAM paper. The *_.csv files in the ./PatternTheory_WACV_Original/PatternTheory_WACV_Original/ folders were modified to replace the JSON queries with the CSV requests.
 
 The text below describes the code for ./PatternTheory_WACV/ and ./PatternTheory_WACV_Original/PatternTheory_WACV_Original/, borrowed from Sathya Aakur.
 
